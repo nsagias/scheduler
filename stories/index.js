@@ -1,7 +1,7 @@
 import React from "react";
 
 import { storiesOf } from "@storybook/react";
-import { action } from "@storybook/addon-actions";
+import { action, ADDON_ID } from "@storybook/addon-actions";
 
 import "index.scss";
 
@@ -23,3 +23,17 @@ storiesOf("Button", module)
       Disabled
     </Button>
   ));
+
+  storiesOf("DayListItem", module)
+    .addParameters({
+      backgrounds: [{name: "dark", value: "#222f3e", default: true}]
+    })
+    .add("Unselected", ()=> <DayListItem name="Monday" spots={} />)
+    .add("Selected", ()=> <DayListItem name="Monday" spots={} selected/>)
+    .add("Full", ()=> <DayListItem name="Monday" spots={} />)
+    .add("Clickable", ()=> (
+       <DayListItem 
+         name="Tuesday" 
+         setDay={action('setDay')} 
+         spots={5} />
+    ));
