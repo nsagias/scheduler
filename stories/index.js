@@ -24,13 +24,13 @@ storiesOf("Button", module)
     </Button>
   ));
 
-  storiesOf("DayListItem", module)
+storiesOf("DayListItem", module)
     .addParameters({
       backgrounds: [{name: "dark", value: "#222f3e", default: true}]
     })
-    .add("Unselected", ()=> <DayListItem name="Monday" spots={} />)
-    .add("Selected", ()=> <DayListItem name="Monday" spots={} selected/>)
-    .add("Full", ()=> <DayListItem name="Monday" spots={} />)
+    .add("Unselected", ()=> <DayListItem name="Monday" spots={1} />)
+    .add("Selected", ()=> <DayListItem name="Monday" spots={1} selected/>)
+    .add("Full", ()=> <DayListItem name="Monday" spots={1} />)
     .add("Clickable", ()=> (
        <DayListItem 
          name="Tuesday" 
