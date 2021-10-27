@@ -10,10 +10,7 @@ export default function Button(props) {
   if (props.danger) {
     buttonClass += " button--danger";
   }
-  if (props.danger) {
-    buttonClass += " disable";
-  }
-
+  
   return (
     <button 
       className={buttonClass}
