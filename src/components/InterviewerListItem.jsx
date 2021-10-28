@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from "classnames";
-import { useState } from 'react';
+
 
 import "components/InterviewListItem.scss"
 
