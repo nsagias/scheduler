@@ -7,7 +7,9 @@ import "components/InterviewListItem.scss"
 export default function InterviewListItem(props){
   const {id, name, avatar, selected} = props;
   const [interviewer, setInterviewer] = useState("");
-  // console.log(props)
+  console.log('props',props)
+  console.log('get selected',selected)
+  // console.log('interviewer', interviewer)
   const interviewerClass = classNames("interviewers__item", {
     "interviewers__item--selected": selected,
 
@@ -16,13 +18,14 @@ export default function InterviewListItem(props){
     <li 
     className={interviewerClass}
       // className="interviewers__item"
-      onClick={() => props.setInterviewer(id)}>
+      onClick={() => setInterviewer(id)}>
       <img
         className="interviewers__item-image"
         src={avatar}
-        alt={props.name && name}
+        alt={name && name}
       />
-    {props.name && name}
+      {/* check if name equal selected and then show */}
+    {name && name}
    
   </li>
   );
