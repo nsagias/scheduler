@@ -23,7 +23,8 @@ const days = [
 
 export default function Application(props) {
   const [day, setDay] = useState("Monday");
-  console.log(day);
+  const [interviewer, setInterviewer] = useState("Monday");
+  console.log(interviewer);
   return (
     <main className="layout">
       <section className="sidebar">
