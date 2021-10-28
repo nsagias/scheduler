@@ -14,8 +14,10 @@ import React from 'react';
 // setInterviewer:function - a function that accepts an interviewer id. This function will simply be passed down to the InterviewerListItem
 // interviewer:number - a number that represents the id of the currently selected interviewer
 
-export default function InterviewList(props) {
-  console.log(props)
+export default function InterviewerList(props) {
+  const {interviewers, setInterviewer} = props;
+  console.log(props.setInterviewer)
+
   return (
   <section className="interviewers">
     <h4 className="interviewers__header text--light">Interviewer</h4>
