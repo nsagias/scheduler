@@ -10,14 +10,16 @@ import "components/InterviewerList.scss";
 // interviewer:number - a number that represents the id of the currently selected interviewer
 
 export default function InterviewerList(props) {
-  const {interviewers, setInterviewer, id} = props;
+  const {interviewers, interviewer, setInterviewer, id} = props;
   // const [currentInterviewer, setCurrentInterviewer] = useState(0);
- 
+  console.log('Selected',props)
   const parsedInterviewers = interviewers.map(person => 
     <InterviewListItem 
       key={person.id}
       name={person.name}
       avatar={person.avatar}
+      setInterviewer={() => setInterviewer(person.id)}
+   
     />
   
     );
