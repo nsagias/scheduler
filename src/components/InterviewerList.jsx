@@ -1,14 +1,7 @@
 import React from 'react';
-import InterviewListItem from './InterviewListItem';
+import InterviewListItem from './InterviewerListItem';
 import "components/InterviewerList.scss";
 
-// const interviewers = [
-//   { id: 1, name: "Sylvia Palmer", avatar: "https://i.imgur.com/LpaY82x.png" },
-//   { id: 2, name: "Tori Malcolm", avatar: "https://i.imgur.com/Nmx0Qxo.png" },
-//   { id: 3, name: "Mildred Nazir", avatar: "https://i.imgur.com/T2WwVfS.png" },
-//   { id: 4, name: "Cohana Roy", avatar: "https://i.imgur.com/FK8V841.jpg" },
-//   { id: 5, name: "Sven Jones", avatar: "https://i.imgur.com/twYrpay.jpg" }
-// ];
 
 // Our InterviewerList receives three props:
 
@@ -17,14 +10,14 @@ import "components/InterviewerList.scss";
 // interviewer:number - a number that represents the id of the currently selected interviewer
 
 export default function InterviewerList(props) {
-  const {interviewers, setInterviewer} = props;
-  // console.log(props.setInterviewer)
+  const {interviewers, setInterviewer, id} = props;
+  // const [currentInterviewer, setCurrentInterviewer] = useState(0);
+ 
   const parsedInterviewers = interviewers.map(person => 
     <InterviewListItem 
       key={person.id}
       name={person.name}
       avatar={person.avatar}
-      setInterviewer={person.id}
     />
   
     );

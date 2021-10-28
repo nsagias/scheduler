@@ -5,8 +5,7 @@ import { useState } from 'react';
 import "components/InterviewListItem.scss"
 
 export default function InterviewListItem(props){
-  let {id, name, avatar, selected} = props;
-  const [interviewer, setInterviewer] = useState("");
+  let {id, name, avatar, selected, setInterviewer} = props;
 
   function nameLogic(name) {
     if (!selected) {
