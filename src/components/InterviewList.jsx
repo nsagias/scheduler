@@ -15,6 +15,7 @@ import React from 'react';
 // interviewer:number - a number that represents the id of the currently selected interviewer
 
 export default function InterviewList(props) {
+  console.log(props)
   return (
   <section className="interviewers">
     <h4 className="interviewers__header text--light">Interviewer</h4>

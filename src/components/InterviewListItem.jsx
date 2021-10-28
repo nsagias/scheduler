@@ -7,7 +7,7 @@ import "components/InterviewListItem.scss"
 export default function InterviewListItem(props){
   const {id, name, avatar, selected} = props;
   const [interviewer, setInterviewer] = useState("");
-  console.log(props)
+  // console.log(props)
   const interviewerClass = classNames("interviewers__item", {
     "interviewers__item--selected": selected,
 
