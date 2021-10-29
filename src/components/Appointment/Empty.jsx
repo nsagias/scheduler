@@ -1,6 +1,7 @@
 import React from 'react';
 
 export default function(props) {
+  const {onAdd} = props;
   return (
     <main 
       className="appointment__add">
