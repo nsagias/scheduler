@@ -12,7 +12,7 @@ import "components/InterviewerList.scss";
 export default function InterviewerList(props) {
   const {interviewers, value, onChange, id} = props;
   // const [currentInterviewer, setCurrentInterviewer] = useState(0);
-  console.log('Interviewer prop', props)
+  // console.log('Interviewer prop', props)
   const parsedInterviewers = interviewers.map(person => 
     <InterviewListItem 
       key={person.id}
