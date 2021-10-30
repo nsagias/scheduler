@@ -3,6 +3,7 @@ import InterviewerList from 'components/InterviewerList';
 import Button from 'components/Button';
 
 export default function Form(props){
+  const {student, interviewer, interviewers, onSave, onCancel } = props;
   return (
     <main className="appointment__card appointment__card--create">
       <section className="appointment__card-left">
@@ -18,14 +19,12 @@ export default function Form(props){
             */
           />
         </form>
-        <InterviewerList 
-          /* your code goes here */
-        />
+        {/* <InterviewerList />*/}
       </section>
       <section className="appointment__card-right">
         <section className="appointment__actions">
-          <Button danger code={/* your code goes here */}>Cancel</Button>
-          <Button confirm code={/* your code goes here */}>Save</Button>
+          <Button danger onClick={onCancel}>Cancel</Button>
+          <Button confirm onClick={onSave} >Save</Button>
         </section>
       </section>
     </main>
