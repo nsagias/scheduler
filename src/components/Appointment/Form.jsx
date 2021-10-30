@@ -4,6 +4,16 @@ import Button from 'components/Button';
 
 export default function Form(props){
   const {student, interviewer, interviewers, onSave, onCancel } = props;
+  // const parsedInterviewers = interviewers.map(person => 
+  //   <InterviewListItem 
+  //     key={person.id}
+  //     name={person.name}
+  //     avatar={person.avatar}
+  //     // selected={person.id === value}
+  //     // setInterviewer={() => onChange(person.id)}
+   
+  //   /> );
+  console.log(props)
   return (
     <main className="appointment__card appointment__card--create">
       <section className="appointment__card-left">
@@ -19,7 +29,10 @@ export default function Form(props){
             */
           />
         </form>
-        {/* <InterviewerList />*/}
+        <InterviewerList 
+          interviewers={interviewers}
+        />
+        
       </section>
       <section className="appointment__card-right">
         <section className="appointment__actions">
