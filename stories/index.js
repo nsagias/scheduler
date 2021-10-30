@@ -203,8 +203,8 @@ storiesOf("InterviewerList", module)
   .add("Show", () => <Show 
                           student={"Lydia Miller-Jones"}
                           // use interviewer object areard
-                          interviewer={{interviewer}}
+                          interviewer={interviewer}
                           onEdit={action("onEdit")}
-                          nDelete={action("onDelete")}
+                          onDelete={action("onDelete")}
                           />)
   
