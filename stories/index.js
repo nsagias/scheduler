@@ -201,10 +201,10 @@ storiesOf("InterviewerList", module)
   .add("Header", () => <Header time="12pm"/>)
   .add("Empty", () => <Empty onAdd={action("onAdd")}/>)
   .add("Show", () => <Show 
-                                         student={"Lydia Miller-Jones"}
-                                         // use interviewer object areard
-                                         interviewer={{interviewer}}
-                                         onEdit={action("onEdit")}
-                                         nDelete={action("onDelete")}
-                                         />)
+                          student={"Lydia Miller-Jones"}
+                          // use interviewer object areard
+                          interviewer={{interviewer}}
+                          onEdit={action("onEdit")}
+                          nDelete={action("onDelete")}
+                          />)
   
