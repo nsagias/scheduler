@@ -22,7 +22,7 @@ export default function Form(props){
           <input
             className="appointment__create-input text--semi-bold"
             value={student}
-            // name="name"
+            name="name"
             type="text"
             key={id} 
             placeholder="Enter Student Name"
@@ -30,15 +30,16 @@ export default function Form(props){
           />
         </form>
         <InterviewerList
-          key={id}
+          value={interviewer}
           interviewers={interviewers}
-          setInterviewer={() => onSave(interviewer)}
+          
         />
         
       </section>
       <section className="appointment__card-right">
         <section className="appointment__actions">
           <Button danger onClick={onCancel}>Cancel</Button>
+          {/* setInterviewer={() => onSave(interviewer)} */}
           <Button confirm onClick={onSave} >Save</Button>
         </section>
       </section>
