@@ -22,7 +22,6 @@ export default function InterviewerList(props) {
       setInterviewer={() => onChange(person.id)}
    
     />
-  
     );
 
   return (
