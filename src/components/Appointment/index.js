@@ -6,14 +6,22 @@ import "components/Appointment/styles.scss"
 
 
 export default function Appointment(props) {
-  const {time, interview, id} = props;
+ const {id, item, interview} = props;
+  // console.log(props.interview.interviewer)
+  // const {interviewer} = interview;
+  // console.log('interviewID:', interviewer.id)
+  // console.log('interviewID:', interviewer.name)
   console.log(props)
   return (
     <article className="appointment">
      
-      <Header time={time} />
+      <Header time={props.time} />
   
-      {interview ? <Show /> : <Empty/>} 
+        {!interview ? <Empty /> : <Show 
+          student={interview.student}
+          interviewer={interview.interviewer}
+        /> }
+      
 
     </article>
   );
