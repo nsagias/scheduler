@@ -3,7 +3,7 @@ import InterviewerList from 'components/InterviewerList';
 import Button from 'components/Button';
 
 export default function Form(props){
-  const {student, interviewer, interviewers, onSave, onCancel } = props;
+  const {student, interviewer, interviewers, onSave, onCancel, id } = props;
   // const parsedInterviewers = interviewers.map(person => 
   //   <InterviewListItem 
   //     key={person.id}
@@ -13,21 +13,26 @@ export default function Form(props){
   //     // setInterviewer={() => onChange(person.id)}
    
   //   /> );
-  console.log(props)
+  console.log("form props",props)
+  
   return (
     <main className="appointment__card appointment__card--create">
       <section className="appointment__card-left">
         <form autoComplete="off">
           <input
             className="appointment__create-input text--semi-bold"
-            name="name"
+            value={student}
+            // name="name"
             type="text"
+            key={id} 
             placeholder="Enter Student Name"
             onChange={(event) => onSave(event.target.value)}
           />
         </form>
-        <InterviewerList 
+        <InterviewerList
+          key={id}
           interviewers={interviewers}
+          setInterviewer={() => onSave(interviewer)}
         />
         
       </section>
