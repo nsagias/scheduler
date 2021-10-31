@@ -19,10 +19,11 @@ export default function Form(props){
     reset();
   }; 
   
+  
   const handleSubmit = event => {
     event.preventDefault();
   };
-  console.log("form props",props)
+  console.log("form interviewer", interviewer)
   
   return (
     <main className="appointment__card appointment__card--create">
@@ -50,7 +51,9 @@ export default function Form(props){
       <section className="appointment__card-right">
         <section className="appointment__actions">
           <Button danger onClick={onCancelReset}>Cancel</Button>
+          {/* <Button confirm onClick={onSave(interviewer)} >Save</Button> */}
           <Button confirm onClick={onSave} >Save</Button>
+     
         </section>
       </section>
     </main>
