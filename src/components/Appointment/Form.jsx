@@ -7,21 +7,7 @@ export default function Form(props){
   const {interviewers, onSave, onCancel} = props;
   const [student, setStudent] = useState(props.student || "");
   const [interviewer, setInterviewer] = useState(props.interviewer || null);
-// The Form component should track the following state:
 
-// student:String
-// interviewer:Number
-// The Form component should have the following actions:
-
-// setStudent:Function
-// setInterviewer:Function
-// The Form component should take the following props:
-
-// student:String
-// interviewers:Array
-// interviewer:Number
-// onSave:Function
-// onCancel:Function
   console.log("form props",props)
   
   return (
