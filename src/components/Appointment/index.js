@@ -6,7 +6,10 @@ import "components/Appointment/styles.scss"
 
 
 export default function Appointment(props) {
+  const {time} = props;
   return (
-    <article className="appointment"></article>
+    <article className="appointment">
+      <Header time={time} />
+    </article>
   );
 }
