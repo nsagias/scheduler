@@ -20,14 +20,15 @@ export default function Form(props){
             name="name"
             type="text"
             placeholder="Enter Student Name"
-            onChange={(event) => onSave(event.target.value)}
+            onChange={(event) => setStudent(event.target.value)}
           />
         </form>
         <InterviewerList
           value={interviewer}
           // value={interviewer.id}
           interviewers={interviewers}
-          // setInterviewer={() => onChange(person.id)}
+          // <select value={this.state.value} onChange={this.handleChange}> 
+          onChange={setInterviewer}
           
         />
         
