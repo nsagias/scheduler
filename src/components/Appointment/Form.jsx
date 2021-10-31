@@ -4,15 +4,21 @@ import Button from 'components/Button';
 
 export default function Form(props){
   const {student, interviewer, interviewers, onSave, onCancel, id } = props;
-  // const parsedInterviewers = interviewers.map(person => 
-  //   <InterviewListItem 
-  //     key={person.id}
-  //     name={person.name}
-  //     avatar={person.avatar}
-  //     // selected={person.id === value}
-  //     // setInterviewer={() => onChange(person.id)}
-   
-  //   /> );
+// The Form component should track the following state:
+
+// student:String
+// interviewer:Number
+// The Form component should have the following actions:
+
+// setStudent:Function
+// setInterviewer:Function
+// The Form component should take the following props:
+
+// student:String
+// interviewers:Array
+// interviewer:Number
+// onSave:Function
+// onCancel:Function
   console.log("form props",props)
   
   return (
