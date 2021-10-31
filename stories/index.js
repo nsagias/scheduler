@@ -228,7 +228,7 @@ storiesOf("InterviewerList", module)
     <Form 
       id={1} 
       student={"Nick Student"}
-      interviewer={interviewer}
+      interviewer={"Nick Interviewer"}
       interviewers={interviewers}
       onSave={ action("onSave")}
       onCancel= { action("onCancel") }
