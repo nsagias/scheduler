@@ -3,7 +3,7 @@ import InterviewerList from 'components/InterviewerList';
 import Button from 'components/Button';
 
 export default function Form(props){
-  const {student, interviewer, interviewers, onSave, onCancel, id } = props;
+  const {student, interviewer, interviewers, onSave, onCancel} = props;
 // The Form component should track the following state:
 
 // student:String
@@ -30,13 +30,13 @@ export default function Form(props){
             value={student}
             name="name"
             type="text"
-            key={id} 
             placeholder="Enter Student Name"
             onChange={(event) => onSave(event.target.value)}
           />
         </form>
         <InterviewerList
-          value={interviewer.id}
+          value={interviewer}
+          // value={interviewer.id}
           interviewers={interviewers}
           // setInterviewer={() => onChange(person.id)}
           
