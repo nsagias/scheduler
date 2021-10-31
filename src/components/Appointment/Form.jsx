@@ -12,14 +12,22 @@ export default function Form(props){
   const reset = () => {
     setStudent("");
     setInterviewer("");
-  }
-
+  };
+  // combine onCancel and reset to execute both
+  const onCancelReset= (event) => {
+    onCancel();
+    reset();
+  }; 
+  
+  const handleSubmit = event => {
+    event.preventDefault();
+  };
   console.log("form props",props)
   
   return (
     <main className="appointment__card appointment__card--create">
       <section className="appointment__card-left">
-        <form autoComplete="off">
+        <form autoComplete="off" onSubmit={handleSubmit}>
           <input
             className="appointment__create-input text--semi-bold"
             value={student}
@@ -41,13 +49,7 @@ export default function Form(props){
       </section>
       <section className="appointment__card-right">
         <section className="appointment__actions">
-        {/* e.target.reset(); */}
-          <Button 
-            danger 
-            onClick={
-                    onCancel, 
-                    reset     
-                    }>Cancel</Button>
+          <Button danger onClick={onCancelReset}>Cancel</Button>
           <Button confirm onClick={onSave} >Save</Button>
         </section>
       </section>
