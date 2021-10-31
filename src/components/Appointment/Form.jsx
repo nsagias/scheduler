@@ -7,6 +7,12 @@ export default function Form(props){
   const {interviewers, onSave, onCancel} = props;
   const [student, setStudent] = useState(props.student || "");
   const [interviewer, setInterviewer] = useState(props.interviewer || null);
+  
+  // create reset function
+  const reset = () => {
+    setStudent("");
+    setInterviewer("");
+  }
 
   console.log("form props",props)
   
@@ -35,8 +41,13 @@ export default function Form(props){
       </section>
       <section className="appointment__card-right">
         <section className="appointment__actions">
-          <Button danger onClick={onCancel}>Cancel</Button>
-          {/* setInterviewer={() => onSave(interviewer)} */}
+        {/* e.target.reset(); */}
+          <Button 
+            danger 
+            onClick={
+                    onCancel, 
+                    reset     
+                    }>Cancel</Button>
           <Button confirm onClick={onSave} >Save</Button>
         </section>
       </section>
