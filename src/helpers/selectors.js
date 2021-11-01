@@ -9,5 +9,6 @@ export function getAppointmentsForDay(state, day) {
       }
     }
   }
+
   return appointments;
 }
