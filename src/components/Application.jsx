@@ -66,7 +66,14 @@ export default function Application(props) {
   const [interviewer, setInterviewer] = useState("Monday");
   // console.log(interviewer);
  
-  const schedule = appointments.map(x =>
+  // const schedule = appointments.map(x =>
+  //   <Appointment
+  //     id={x.id}
+  //     time={x.time}
+  //     interview={x.interview}
+  //   />
+  // )
+  const appointment = appointments.map(x =>
     <Appointment
       id={x.id}
       time={x.time}
@@ -99,7 +106,7 @@ export default function Application(props) {
       </section>
       <section className="schedule">
         {/* Replace this with the schedule elements durint the "The Scheduler" activity. */}
-       {schedule}
+        {appointment}
         <Appointment key="last" time="5pm" />
       </section>
     </main>
