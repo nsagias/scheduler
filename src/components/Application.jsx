@@ -65,14 +65,7 @@ export default function Application(props) {
   const [day, setDay] = useState("Monday");
   const [interviewer, setInterviewer] = useState("Monday");
   // console.log(interviewer);
-  // const parsedDay = days.map(days => 
-  //   <DayListItem 
-  //     key={days.id}
-  //     name={days.name}
-  //     spots={days.spots} 
-  //     selected={days.name === props.value}
-  //     setDay={onChange}  
-  //   /> 
+ 
   const schedule = appointments.map(x =>
     <Appointment
       id={x.id}
