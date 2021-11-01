@@ -45,24 +45,29 @@ const appointments = [
     time: "4pm",
   }
 ];
+// const state = { day: "Monday", days: [] }; 
+// setState({ ...state, day: "Tuesday" });
 
 export default function Application(props) {
-//   "GET_DAYS":         http://localhost:8001/api/days
-// "GET_APPOINTMENTS": http://localhost:8001/api/appointments
-// "GET_INTERVIEWERS": http://localhost:8001/api/interviewers
-  const [day, setDay] = useState('Monday');
-  const [days, setDays] = useState([]);
-  const [interviewer, setInterviewer] = useState("Monday");
+  // const [day, setDay] = useState('Monday');
+  // const [days, setDays] = useState([]);
+  // const [interviewer, setInterviewer] = useState("Monday");
+  const [state, setState] = useState({
+    day: "Monday",
+    days: [],
+    // you may put the line below, but will have to remove/comment hardcoded appointments variable
+    // appointments: {}
+  })
+  const setDay = day => setState({ ...state, day });
+  const setDays = days => setState(prev => ({ ...prev, days }));
+  
 
   useEffect(() => {
     const endpoint = 'http://localhost:8001/api/days';
-    axios.get(endpoint).then(response => {
-      setDays(response.data)
-      // console.log('here',Array.isArray(response.data));
-      // console.log('here',...response.data);
-      // console.log(response.data.id);
-      // console.log(response.data.name);
-    });
+    axios.get(endpoint).then(response => { setDays(response.data)});
+    // axios.get(endpoint).then(response => setDays(response.data));
+
+    // setState(prev => ({ ...prev, days }));
   }, []);
   
   const appointment = appointments.map(x =>
@@ -83,8 +88,8 @@ export default function Application(props) {
         <hr className="sidebar__separator sidebar--centered" />
         <nav className="sidebar__menu">
         <DayList
-              days={days}
-              value={day}
+              days={state.days}
+              value={state.day}
               onChange={setDay}
           
             />
