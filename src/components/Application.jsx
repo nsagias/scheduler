@@ -60,12 +60,23 @@ export default function Application(props) {
   })
   const dailyAppointments = [];
   const setDay = day => setState({ ...state, day });
-  const setDays = days => setState(prev => ({ ...prev, days }));
+  // const setDays = days => setState(prev => ({ ...prev, days }));
   
 
   useEffect(() => {
-    const endpoint = 'http://localhost:8001/api/days';
-    axios.get(endpoint).then(response => { setDays(response.data)});
+    // const endpoint = 'http://localhost:8001/api/days';
+    // axios.get(endpoint).then(response => { setDays(response.data)});
+    const GET_DAYS =         'http://localhost:8001/api/days';
+    const GET_APPOINTMENTS = 'http://localhost:8001/api/appointments';
+    const GET_INTERVIEWERS = 'http://localhost:8001/api/interviewers';
+    // axios.get(endpoint).then(response =>  response);
+    Promise.all([
+      axios.get(GET_DAYS),
+      axios.get(GET_APPOINTMENTS),
+      axios.get(GET_INTERVIEWERS)
+    ]).then((all) => {
+      setState(prev => ({...prev, first: all[0], second: all[1], third: all[2] }));
+    })
    
   }, []);
   
