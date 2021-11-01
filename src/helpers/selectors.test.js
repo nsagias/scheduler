@@ -14,6 +14,7 @@ const state = {
     }
   ],
   appointments: {
+    // Monday
     "1": { id: 1, time: "12pm", interview: null },
     "2": { id: 2, time: "1pm", interview: null },
     "3": {
@@ -21,6 +22,7 @@ const state = {
       time: "2pm",
       interview: { student: "Archie Cohen", interviewer: 2 }
     },
+    // Tuesday
     "4": { id: 4, time: "3pm", interview: null },
     "5": {
       id: 5,
