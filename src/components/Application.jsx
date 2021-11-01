@@ -58,12 +58,12 @@ export default function Application(props) {
     const endpoint = 'http://localhost:8001/api/days';
     axios.get(endpoint).then(response => {
       setDays(response.data)
-      console.log('here',Array.isArray(response.data));
+      // console.log('here',Array.isArray(response.data));
       // console.log('here',...response.data);
       // console.log(response.data.id);
       // console.log(response.data.name);
     });
-  }, [days]);
+  }, []);
   
   const appointment = appointments.map(x =>
     <Appointment
