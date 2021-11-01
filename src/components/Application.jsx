@@ -47,8 +47,23 @@ const appointments = [
 ];
 
 export default function Application(props) {
-  const [day, setDay] = useState([]);
+//   "GET_DAYS":         http://localhost:8001/api/days
+// "GET_APPOINTMENTS": http://localhost:8001/api/appointments
+// "GET_INTERVIEWERS": http://localhost:8001/api/interviewers
+  const [day, setDay] = useState('Monday');
+  const [days, setDays] = useState([]);
   const [interviewer, setInterviewer] = useState("Monday");
+
+  useEffect(() => {
+    const endpoint = 'http://localhost:8001/api/days';
+    axios.get(endpoint).then(response => {
+      setDays(response.data)
+      console.log('here',Array.isArray(response.data));
+      // console.log('here',...response.data);
+      // console.log(response.data.id);
+      // console.log(response.data.name);
+    });
+  }, [days]);
   
   const appointment = appointments.map(x =>
     <Appointment
