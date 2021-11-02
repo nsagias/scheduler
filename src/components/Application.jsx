@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import DayList from "./DayList";
 import Appointment from "components/Appointment";
-import {getAppointmentsForDay} from "helpers/selectors";
+import {getAppointmentsForDay, getInterview} from "helpers/selectors";
 
 
 import "components/Application.scss";
@@ -89,8 +89,8 @@ export default function Application(props) {
    
   }, []);
   
-  const dailyAppointments = getAppointmentsForDay(state, state.day);
-const appointment = dailyAppointments.map(x => {
+  const appointment = getAppointmentsForDay(state, state.day);
+const schedule = appointment.map(x => {
   const interview = getInterview(state, appointment.interview);
   return ( 
     <Appointment
@@ -127,7 +127,7 @@ const appointment = dailyAppointments.map(x => {
       </section>
       <section className="schedule">
         {/* Replace this with the schedule elements durint the "The Scheduler" activity. */}
-        {appointment}
+        {schedule}
         <Appointment key="last" time="5pm" />
       </section>
     </main>
