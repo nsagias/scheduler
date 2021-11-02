@@ -17,12 +17,13 @@ export default function useVisualMode(initial) {
   };
   
   const back = () => {
-    const result = [...history];
-    result.pop()
-    return (
-      setHistory(() => ([...result])),
-      setMode(result[result.length -1])
-    );
+    let result = [...history];
+    if (result.length > 1) {
+      result.pop();
+    } 
+    setHistory(() => ([...result])),
+    setMode(result[result.length -1])
+    
   };
   
   return { mode, transition, back };
