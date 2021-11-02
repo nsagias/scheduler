@@ -90,14 +90,16 @@ export default function Application(props) {
   }, []);
   
   const dailyAppointments = getAppointmentsForDay(state, state.day);
-  const appointment = dailyAppointments.map(x =>
+const appointment = dailyAppointments.map(x => {
+   return ( 
     <Appointment
       key={x.id}
       id={x.id}
       time={x.time}
       interview={x.interview}
     />
-  );
+   );
+});
   return (
     <main className="layout">
       <section className="sidebar">
