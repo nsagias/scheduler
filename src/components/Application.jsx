@@ -90,6 +90,7 @@ export default function Application(props) {
   
   const appointment = dailyAppointments.map(x =>
     <Appointment
+      key={x.id}
       id={x.id}
       time={x.time}
       interview={x.interview}
