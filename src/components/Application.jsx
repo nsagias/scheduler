@@ -2,13 +2,13 @@ import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import DayList from "./DayList";
 import Appointment from "components/Appointment";
-import getAppointmentsForDay from "helpers/selectors";
+import {getAppointmentsForDay} from "helpers/selectors";
 
 
 import "components/Application.scss";
 
 
-const dailyAppointments = [
+let dailyAppointments = [
   {
     id: 1,
     time: "12pm",
@@ -89,6 +89,7 @@ export default function Application(props) {
    
   }, []);
   
+  dailyAppointments = getAppointmentsForDay(state, state.day);
   const appointment = dailyAppointments.map(x =>
     <Appointment
       key={x.id}
@@ -96,7 +97,7 @@ export default function Application(props) {
       time={x.time}
       interview={x.interview}
     />
-  )
+  );
   return (
     <main className="layout">
       <section className="sidebar">
