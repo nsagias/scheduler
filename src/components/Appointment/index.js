@@ -2,6 +2,7 @@ import React from 'react';
 import Header from 'components/Appointment/Header';
 import Show from 'components/Appointment/Show';
 import Empty from 'components/Appointment/Empty';
+import useVisualMode from 'hooks/useVisualMode';
 import "components/Appointment/styles.scss"
 
 
@@ -11,7 +12,7 @@ export default function Appointment(props) {
   // const {interviewer} = interview;
   // console.log('interviewID:', interviewer.id)
   // console.log('interviewID:', interviewer.name)
-  console.log(props)
+  // console.log(props)
   return (
     <article className="appointment">
      

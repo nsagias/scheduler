@@ -27,8 +27,8 @@ export function getInterview(state, interview ){
   result['student'] = interview['student']
   result['interviewer'] = state.interviewers[interview.interviewer];
   
-console.log('get interview',interview.interviewer)
-console.log('student', interview.student)
-console.log('all the interviews',state.interviewers[interview.interviewer])
+// console.log('get interview',interview.interviewer)
+// console.log('student', interview.student)
+// console.log('all the interviews',state.interviewers[interview.interviewer])
 return result;
 };
