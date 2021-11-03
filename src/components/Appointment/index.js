@@ -11,7 +11,7 @@ export default function Appointment(props) {
   // const {interviewer} = interview;
   // console.log('interviewID:', interviewer.id)
   // console.log('interviewID:', interviewer.name)
-  console.log(props)
+  // console.log(props)
   return (
     <article className="appointment">
      
