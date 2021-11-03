@@ -1,5 +1,9 @@
 export function getAppointmentsForDay(state, day) {
   let appointments = [];
+  if (state.days.length === 0) {
+    return appointments;
+  }
+  
   // for ( const i of state.days) {  if (i.name === name) { for (const x of i.appointments)  console.log(x) }}
   // for ( const i of state.days) {  if (i.name === name) { for (const x of i.appointments)   state.appointments[x] }}
   for ( const i of state.days) {  
@@ -36,6 +40,9 @@ return result;
 
 export function getInterviewersForDay(state, day) {
   let interviewers = [];
+  if (state.days.length === 0) {
+    return interviewers;
+  }
  
   for ( const i of state.days) {  
     if (i.name === day) { 
