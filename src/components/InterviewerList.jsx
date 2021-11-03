@@ -3,34 +3,44 @@ import InterviewListItem from './InterviewerListItem';
 import "components/InterviewerList.scss";
 
 
-// Our InterviewerList receives three props:
-
-// interviewers:array - an array of objects as seen above
-// setInterviewer:function - a function that accepts an interviewer id. This function will simply be passed down to the InterviewerListItem
-// interviewer:number - a number that represents the id of the currently selected interviewer
-
 export default function InterviewerList(props) {
   const {interviewers, value, onChange, id} = props;
   // const [currentInterviewer, setCurrentInterviewer] = useState(0);
   console.log('Interviewer prop', props)
-  const parsedInterviewers = interviewers.map(person => 
+  
+  // const parsedInterviewers = interviewers.map(person => 
+    // <InterviewListItem 
+    //   key={person.id}
+    //   name={person.name}
+    //   avatar={person.avatar}
+    //   selected={person.id === value}
+    //   setInterviewer={() => onChange(person.id)}
+   
+    // />
+      // );
+    // id: 3,
+    //         name: "Sylvia Palmer",
+    //         avatar: "https://i.imgur.com/LpaY82x.png",
+    const parsedInterviewers = 
     <InterviewListItem 
-      key={person.id}
-      name={person.name}
-      avatar={person.avatar}
-      selected={person.id === value}
-      setInterviewer={() => onChange(person.id)}
+      key={3}
+      name={"Sylvia Palmer"}
+      avatar={"https://i.imgur.com/LpaY82x.png"}
+      selected={3 === value}
+      setInterviewer={() => onChange(3)}
    
     />
-  
-    );
 
   return (
-  <section className="interviewers">
-   <h4 className="interviewers__header text--light">Interviewer</h4>
-   <ul className="interviewers__list">{parsedInterviewers}</ul>
+    <section className="interviewers">
+     <h4 className="interviewers__header text--light">Interviewer</h4>
+     <ul className="interviewers__list">{parsedInterviewers}</ul>
+      
+    </section>
     
-  </section>
+    );
+  }
   
-  );
-}
+  // InterviewerList.propTypes = {
+  //   interviewers: PropTypes.array.isRequired
+  // };
