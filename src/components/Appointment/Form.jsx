@@ -23,7 +23,7 @@ export default function Form(props){
   const handleSubmit = event => {
     event.preventDefault();
   };
-  console.log("PROPS", props)
+  // console.log("PROPS", props)
   
   return (
     <main className="appointment__card appointment__card--create">
