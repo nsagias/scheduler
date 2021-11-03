@@ -26,21 +26,6 @@ export default function Application(props) {
   // const setDays = days => setState(prev => ({ ...prev, days }));
   
 
-  function bookInterview(id, interview) {
-    console.log(id, interview);
-    // const appointment = {
-    //   ...state.appointments[id],
-    //   interview: { ...interview }
-    // };
-  }
-  
-  function save(name, interviewer) {
-    const interview = {
-      student: name,
-      interviewer
-    };
-  }
-
 
   useEffect(() => {
    

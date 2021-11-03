@@ -17,9 +17,22 @@ export default function Appointment(props) {
   const { mode, transition, back } = useVisualMode(
     interview ? SHOW : EMPTY
   );
-  // console.log(mode)
+  console.log('xxxxxxxxxxxxx',props)
 
-  // console.log(props)
+  function bookInterview(id, interview) {
+    console.log(id, interview);
+    // const appointment = {
+    //   ...state.appointments[id],
+    //   interview: { ...interview }
+    // };
+  }
+  
+  function save(name, interviewer) {
+    const interview = {
+      student: name,
+      interviewer
+    };
+  }
   return (
     <article className="appointment">
      
