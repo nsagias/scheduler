@@ -9,6 +9,7 @@ import "components/Appointment/styles.scss"
 const EMPTY = "EMPTY";
 const SHOW = "SHOW";
 const CREATE = "CREATE";
+const SAVING = "SAVING";
 
 export default function Appointment(props) {
   const {id, item, interview, interviewers} = props;
@@ -28,11 +29,12 @@ export default function Appointment(props) {
         <Form 
           onCancel={() => {back()}} 
           interviewers={interviewers}
+          onSave={() => {transition(SAVING)}}
           />}
       {mode === SHOW && (
         <Show
           student={interview.student}
-          interviewer={interview.interviewer}
+          // interviewer={interview.interviewer}
           interviewer={interview.interviewer}
         />
       )}

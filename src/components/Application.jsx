@@ -9,6 +9,7 @@ import {
 } from "helpers/selectors";
 import "components/Application.scss";
 
+
 export default function Application(props) {
   // const [day, setDay] = useState('Monday');
   // const [days, setDays] = useState([]);
@@ -25,6 +26,22 @@ export default function Application(props) {
   const setDay = day => setState({ ...state, day });
   // const setDays = days => setState(prev => ({ ...prev, days }));
   
+
+  function bookInterview(id, interview) {
+    console.log(id, interview);
+    // const appointment = {
+    //   ...state.appointments[id],
+    //   interview: { ...interview }
+    // };
+  }
+  
+  function save(name, interviewer) {
+    const interview = {
+      student: name,
+      interviewer
+    };
+  }
+
 
   useEffect(() => {
    
@@ -64,6 +81,7 @@ const schedule = appointments.map((appointment) => {
       time={appointment.time}
       interview={interview}
       interviewers={interviewers}
+      bookInterview={bookInterview}
     />
   );
 });
