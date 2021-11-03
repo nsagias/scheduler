@@ -61,7 +61,6 @@ export default function Application(props) {
   }, []);
   
 const appointments = getAppointmentsForDay(state, state.day);
-console.log(appointments)
 const interviewers = getInterviewersForDay(state, state.day);
 
 

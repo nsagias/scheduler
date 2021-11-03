@@ -3,6 +3,7 @@ import Header from 'components/Appointment/Header';
 import Show from 'components/Appointment/Show';
 import Empty from 'components/Appointment/Empty';
 import Form from 'components/Appointment/Form';
+import Confirm from 'components/Appointment/Confirm';
 import useVisualMode from 'hooks/useVisualMode';
 import "components/Appointment/styles.scss"
 
@@ -16,9 +17,9 @@ export default function Appointment(props) {
   const { mode, transition, back } = useVisualMode(
     interview ? SHOW : EMPTY
   );
-  console.log(mode)
+  // console.log(mode)
 
-  console.log(props)
+  // console.log(props)
   return (
     <article className="appointment">
      
