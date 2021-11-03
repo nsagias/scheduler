@@ -19,13 +19,7 @@ export default function Appointment(props) {
   );
   console.log('xxxxxxxxxxxxx',props)
 
-  function bookInterview(id, interview) {
-    console.log(id, interview);
-    // const appointment = {
-    //   ...state.appointments[id],
-    //   interview: { ...interview }
-    // };
-  }
+
   
   function save(name, interviewer) {
     const interview = {
@@ -43,8 +37,8 @@ export default function Appointment(props) {
         <Form 
           onCancel={() => {back()}} 
           interviewers={interviewers}
-          onSave={() => {transition(SAVING)}}
-          />}
+          onSave={() => {save}}
+                    />}
       {mode === SHOW && (
         <Show
           student={interview.student}
