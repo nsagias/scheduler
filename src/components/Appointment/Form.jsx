@@ -52,7 +52,9 @@ export default function Form(props){
         <section className="appointment__actions">
           <Button danger onClick={onCancelReset}>Cancel</Button>
           {/* <Button confirm onClick={onSave(interviewer)} >Save</Button> */}
-          <Button confirm onClick={() => onSave( {student: student, interviewer:interviewer} )} >Save</Button>
+          <Button confirm onClick={() => onSave( student, interviewer )} >Save</Button>
+          {/* <Button confirm onClick={() => onSave( {student: student, interviewer:interviewer} )} >Save</Button> */}
+
           {/* <Button confirm onClick={() => console.log({student: student, interviewer:interviewer})} >Save</Button> */}
      
         </section>

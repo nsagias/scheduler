@@ -22,7 +22,7 @@ export default function Appointment(props) {
   function save(name, interviewer) {
     const interview = {
       student: name,
-      interviewer: interviewer
+      interviewer
     };
     console.log('SAVE and INTERVIEW FROM APPOINTMENT INDEX', interview)
     
