@@ -24,7 +24,7 @@ export default function Application(props) {
   
   const setDay = day => setState({ ...state, day });
   // const setDays = days => setState(prev => ({ ...prev, days }));
-  
+  console.log('ALL PROPS APPPPPPPP', props)
   function bookInterview(id, interview) {
     
     const appointment = {
@@ -39,7 +39,26 @@ export default function Application(props) {
       ...state,
       appointments
     });
+
+    // const article = { title: 'React PUT Request Example' };
+    // axios.put('https://reqres.in/api/articles/1', article)
+    //     .then(response => this.setState({ updatedAt: response.data.updatedAt }));
+   
+    
     console.log('FROM INSIDE BOOKINTERVIEW',id, interview);
+   
+    const PUT_ID = `http://localhost:8001/api/appointments/${id}`;
+    
+    return axios.put(PUT_ID, {interview})
+      .then((response) => {
+        console.log('THIS IS THE RESPONSE', response);
+      }) 
+      .catch((error) => {
+        console.log(error.response.status);
+        console.log(error.response.headers);
+        console.log(error.response.data);
+      });
+  
   }
   console.log('state', state)
   useEffect(() => {

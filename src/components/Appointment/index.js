@@ -26,7 +26,7 @@ export default function Appointment(props) {
     };
     console.log('SAVE and INTERVIEW FROM APPOINTMENT INDEX', interview)
     
-    bookInterview(props.id, interview)
+    bookInterview(id, interview);
     transition(SHOW);
 
   }
@@ -43,8 +43,8 @@ export default function Appointment(props) {
           student={interview.student}
           interviewer={interview.interviewer}
           // from storybook
-          // onEdit={"onEdit"}
-          // onDelete={"onDelete"}
+          // onEdit={onEdit}
+          // onDelete={onDelete}
         />
       )}
       {mode === CREATE && 
