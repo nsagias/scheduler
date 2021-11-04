@@ -3,12 +3,14 @@ import Header from 'components/Appointment/Header';
 import Show from 'components/Appointment/Show';
 import Empty from 'components/Appointment/Empty';
 import Form from 'components/Appointment/Form';
+import Status from './Status';
 import useVisualMode from 'hooks/useVisualMode';
 import "components/Appointment/styles.scss"
 
 const EMPTY = "EMPTY";
 const SHOW = "SHOW";
 const CREATE = "CREATE";
+const SAVING = "SAVING";
 
 
 export default function Appointment(props) {
@@ -25,7 +27,7 @@ export default function Appointment(props) {
       interviewer
     };
     console.log('SAVE and INTERVIEW FROM APPOINTMENT INDEX', interview)
-    
+    transition(SAVING);
     bookInterview(id, interview);
     transition(SHOW);
 
@@ -53,6 +55,8 @@ export default function Appointment(props) {
           interviewers={interviewers}
           onSave={save}
           />}
+       { mode === SAVING && 
+       <Status message={'SAVING'}/>}
       
     </article>
   );
