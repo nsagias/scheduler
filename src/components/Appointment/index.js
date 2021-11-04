@@ -82,8 +82,8 @@ export default function Appointment(props) {
           student={interview.student}
           interviewer={interview.interviewer}
           // from storybook
-          onEdit={onEdit}
-          onDelete={onDelete}
+          onEdit={()=>onEdit()}
+          onDelete={()=>onDelete()}
         />
       )}
       {mode === CREATE && 
