@@ -17,7 +17,6 @@ export default function Application(props) {
   const [state, setState] = useState({
     day: "Monday",
     days: [],
-    // you may put the line below, but will have to remove/comment hardcoded appointments variable
     appointments: {},
     interviewers: {},
   })
@@ -60,7 +59,42 @@ export default function Application(props) {
       });
   
   }
-  console.log('state', state)
+
+  function cancelInterview(id, interview) {
+    
+    const appointment = {
+      ...state.appointments[id],
+      interview: { ...interview }
+    };
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment
+    };
+    setState({
+      ...state,
+      appointments
+    });
+
+    
+    
+    console.log('FROM INSIDE_CANCEL_INTERVIEW',id, interview);
+   
+    const DELETE_INTEVIEW = `http://localhost:8001/api/appointments/${id}`;
+    
+    return axios.delete(DELETE_INTEVIEW, {interview})
+      .then((response) => {
+        console.log('THIS IS THE DELETE RESPONSE', response);
+      }) 
+      .catch((error) => {
+        console.log(error.response.status);
+        console.log(error.response.headers);
+        console.log(error.response.data);
+      });
+  
+  }
+
+
+
   useEffect(() => {
    
     const GET_DAYS =         'http://localhost:8001/api/days';
@@ -94,6 +128,7 @@ const schedule = appointments.map((appointment) => {
       interview={interview}
       interviewers={interviewers}
       bookInterview={bookInterview}
+      cancelInterview ={cancelInterview}
     />
   );
 });
