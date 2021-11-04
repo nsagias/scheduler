@@ -39,10 +39,10 @@ export default function Appointment(props) {
       student: null,
       interviewer: null
     };
-    console.log('SAVE and INTERVIEW FROM APPOINTMENT INDEX', interview)
+    console.log('DELETE and INTERVIEW FROM APPOINTMENT INDEX', interview)
     transition(DELETING);
     cancelInterview(id, interview);
-    transition(SHOW);
+    transition(EMPTY);
 
   }
 
