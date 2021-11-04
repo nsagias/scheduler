@@ -80,8 +80,8 @@ export default function Application(props) {
     console.log('FROM INSIDE_CANCEL_INTERVIEW',id, interview);
    
     const DELETE_INTEVIEW = `http://localhost:8001/api/appointments/${id}`;
-    
-    return axios.delete(DELETE_INTEVIEW, {interview})
+    // return axios.delete(DELETE_INTEVIEW, {interview})
+    return axios.delete(DELETE_INTEVIEW)
       .then((response) => {
         console.log('THIS IS THE DELETE RESPONSE', response);
       }) 
