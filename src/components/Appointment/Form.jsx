@@ -14,7 +14,7 @@ export default function Form(props){
     setInterviewer("");
   };
   // combine onCancel and reset to execute both
-  const onCancelReset= (event) => {
+  const onCancelReset= () => {
     onCancel();
     reset();
   }; 
@@ -23,7 +23,9 @@ export default function Form(props){
   const handleSubmit = event => {
     event.preventDefault();
   };
-  // console.log("PROPS", props)
+  console.log("FORM PROPS", props)
+  console.log('STUDENT',student)
+  console.log('INTEVIEWER', interviewer)
   
   return (
     <main className="appointment__card appointment__card--create">
@@ -40,9 +42,7 @@ export default function Form(props){
         </form>
         <InterviewerList
           value={interviewer}
-          // value={interviewer.id}
           interviewers={interviewers}
-          // <select value={this.state.value} onChange={this.handleChange}> 
           onChange={setInterviewer}
           
         />
@@ -52,7 +52,7 @@ export default function Form(props){
         <section className="appointment__actions">
           <Button danger onClick={onCancelReset}>Cancel</Button>
           {/* <Button confirm onClick={onSave(interviewer)} >Save</Button> */}
-          <Button confirm onClick={onSave} >Save</Button>
+          <Button confirm onClick={() => onSave(student, interviewer)} >Save</Button>
      
         </section>
       </section>

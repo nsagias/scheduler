@@ -32,7 +32,7 @@ export default function Application(props) {
     //   interview: { ...interview }
     // };
   }
-
+  console.log('state', state)
   useEffect(() => {
    
     const GET_DAYS =         'http://localhost:8001/api/days';

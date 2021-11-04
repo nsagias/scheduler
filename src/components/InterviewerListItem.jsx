@@ -21,21 +21,16 @@ export default function InterviewListItem(props){
   return (
     <li 
       className={interviewersClass}
-      // <li className={interviewerClass} onClick={setInterviewer}>
-      // className="interviewers__item"
       onClick={() => setInterviewer(id)}
       >
       
       <img
         className="interviewers__item-image"
         src={avatar}
-        // alt={nameLogic(name)} 
         alt={name}
 
       />
       {nameLogic(name)}
-      {/* {props.selected && props.name} */}
-      {/* {name} */}
   </li>
   );
 }
