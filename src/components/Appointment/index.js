@@ -3,6 +3,7 @@ import Header from 'components/Appointment/Header';
 import Show from 'components/Appointment/Show';
 import Empty from 'components/Appointment/Empty';
 import Form from 'components/Appointment/Form';
+import Confirm from 'components/Appointment/Confirm';
 import Status from './Status';
 import useVisualMode from 'hooks/useVisualMode';
 import "components/Appointment/styles.scss"
@@ -30,7 +31,7 @@ export default function Appointment(props) {
       interviewer
     };
     console.log('SAVE and INTERVIEW FROM APPOINTMENT INDEX', interview)
-    transition(SAVING);
+    transition(SAVING);// add timout
     bookInterview(id, interview);
     transition(SHOW);
 
@@ -42,16 +43,20 @@ export default function Appointment(props) {
       interviewer: null
     };
     console.log('DELETE and INTERVIEW FROM APPOINTMENT INDEX', interview)
-    transition(DELETING);
+    
+    transition(CONFIRM);
     // ADD CONFIRM LOGIC HERE
-    cancelInterview(id, interview);
-    transition(EMPTY);
-
+    // transition(DELETING);
+    // cancelInterview(id, interview).then(()=> transition(EMPTY))
   };
 
   // W07D5 
+  // function onConfirm() {
+  //   transition(DELETING);
+  // };
   function onConfirm() {
     transition(DELETING);
+    cancelInterview(id, interview).then(()=> transition(EMPTY))
   };
 
   function onCancel() {
@@ -102,7 +107,7 @@ export default function Appointment(props) {
 
 
        { mode === CONFIRM && 
-       <CONFIRM 
+       <Confirm 
           message={"Delete the appointment"}
           onCancel={() => {onCancel()}} 
           onConfirm={() => {onConfirm()}}
