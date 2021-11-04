@@ -88,7 +88,7 @@ export default function Appointment(props) {
       )}
       {mode === CREATE && 
         <Form 
-          onCancel={() => {back()}} 
+          onCancel={() => {onCancel}} 
           interviewers={interviewers}
           onSave={save}
         />}
