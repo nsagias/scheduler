@@ -13,6 +13,7 @@ const CREATE = "CREATE";
 const SAVING = "SAVING";
 const DELETING = "DELETING";
 const CONFIRM = "CONFIRM";
+const EDIT = "EDIT";
 
 
 export default function Appointment(props) {
@@ -46,7 +47,26 @@ export default function Appointment(props) {
     cancelInterview(id, interview);
     transition(EMPTY);
 
+  };
+
+  // W07D5 
+  function onConfirm() {
+    transition(DELETING);
+  };
+
+  function onCancel() {
+    back();
+  };
+
+  function onEdit () {
+    transition(EDIT);
   }
+
+  function onComplete() {
+    transition(SHOW);
+  };
+  
+
 
   console.log('PROPS BEFORE JSX', props)
   return (
@@ -54,14 +74,15 @@ export default function Appointment(props) {
      
       <Header time={props.time} />
       
-      {mode === EMPTY && <Empty onAdd={() => {transition(CREATE)}} />}
+      {mode === EMPTY && 
+        <Empty onAdd={() => {transition(CREATE)}} />}
       
       {mode === SHOW && (
         <Show
           student={interview.student}
           interviewer={interview.interviewer}
           // from storybook
-          // onEdit={onEdit}
+          onEdit={onEdit}
           onDelete={onDelete}
         />
       )}
@@ -70,17 +91,21 @@ export default function Appointment(props) {
           onCancel={() => {back()}} 
           interviewers={interviewers}
           onSave={save}
-          />}
+        />}
+
+
        { mode === SAVING && 
        <Status message={'Saving'}/>}
 
        { mode === DELETING && 
        <Status message={'Deleting'}/>}
 
+
        { mode === CONFIRM && 
        <CONFIRM 
-          // onClick={onCancel}
-          // onClick={onConfirm}
+          message={"Delete the appointment"}
+          onCancel={onCancel}
+          onConfirm={onConfirm}
        />}
       
     </article>
