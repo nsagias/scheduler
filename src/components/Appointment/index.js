@@ -15,7 +15,7 @@ const DELETING = "DELETING";
 
 
 export default function Appointment(props) {
-  const {id, item, interview, interviewers, bookInterview} = props;
+  const {id, item, interview, interviewers, bookInterview, cancelInterview} = props;
   const { mode, transition, back } = useVisualMode(
     interview ? SHOW : EMPTY
   );
@@ -33,6 +33,19 @@ export default function Appointment(props) {
     transition(SHOW);
 
   }
+
+  function onDelete(name, interviewer) {
+    const interview = {
+      student: null,
+      interviewer: null
+    };
+    console.log('SAVE and INTERVIEW FROM APPOINTMENT INDEX', interview)
+    transition(DELETING);
+    cancelInterview(id, interview);
+    transition(SHOW);
+
+  }
+
   console.log('PROPS BEFORE JSX', props)
   return (
     <article className="appointment">
@@ -47,7 +60,7 @@ export default function Appointment(props) {
           interviewer={interview.interviewer}
           // from storybook
           // onEdit={onEdit}
-          // onDelete={onDelete}
+          onDelete={onDelete}
         />
       )}
       {mode === CREATE && 
