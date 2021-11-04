@@ -88,7 +88,7 @@ export default function Appointment(props) {
       )}
       {mode === CREATE && 
         <Form 
-          onCancel={() => {onCancel}} 
+          onCancel={() => {onCancel()}} 
           interviewers={interviewers}
           onSave={save}
         />}
@@ -104,8 +104,8 @@ export default function Appointment(props) {
        { mode === CONFIRM && 
        <CONFIRM 
           message={"Delete the appointment"}
-          onCancel={onCancel}
-          onConfirm={onConfirm}
+          onCancel={() => {onCancel()}} 
+          onConfirm={() => {onConfirm()}}
        />}
       
     </article>
