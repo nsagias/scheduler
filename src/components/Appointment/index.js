@@ -42,6 +42,7 @@ export default function Appointment(props) {
     };
     console.log('DELETE and INTERVIEW FROM APPOINTMENT INDEX', interview)
     transition(DELETING);
+    // ADD CONFIRM LOGIC HERE
     cancelInterview(id, interview);
     transition(EMPTY);
 
@@ -75,6 +76,12 @@ export default function Appointment(props) {
 
        { mode === DELETING && 
        <Status message={'Deleting'}/>}
+
+       { mode === CONFIRM && 
+       <CONFIRM 
+          // onClick={onCancel}
+          // onClick={onConfirm}
+       />}
       
     </article>
   );
