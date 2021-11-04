@@ -32,8 +32,11 @@ export default function Appointment(props) {
     };
     console.log('SAVE and INTERVIEW FROM APPOINTMENT INDEX', interview)
     transition(SAVING);// add timout
-    bookInterview(id, interview);
-    transition(SHOW);
+    bookInterview(id, interview).then(()=> transition(SHOW))
+    // transition(SHOW);
+    // function onComplete() {
+    //   transition(SHOW);
+    // };
 
   }
 
@@ -112,7 +115,20 @@ export default function Appointment(props) {
           onCancel={() => {onCancel()}} 
           onConfirm={() => {onConfirm()}}
        />}
+      { mode === EDIT && 
+      
+      <Form 
+        student={interview.student}
+        interviewer={interview.interviewer.id}
+        interviewers={interviewers}
+        onSave={save}
+        onCancel= {() => onCancel() }
+        // onCancel= {() => {console.log('OMG,',interview.interviewer.id)} }
+      />
+
+      } 
       
     </article>
+
   );
 }
