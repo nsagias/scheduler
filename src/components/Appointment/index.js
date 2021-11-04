@@ -10,12 +10,14 @@ const EMPTY = "EMPTY";
 const SHOW = "SHOW";
 const CREATE = "CREATE";
 
+
 export default function Appointment(props) {
   const {id, item, interview, interviewers} = props;
   const { mode, transition, back } = useVisualMode(
     interview ? SHOW : EMPTY
   );
   console.log(mode)
+  console.log('PROPS INSIDE OF APPOINTMENTS', props)
 
   function save(name, interviewer) {
     const interview = {
@@ -23,6 +25,7 @@ export default function Appointment(props) {
       interviewer
     };
     console.log('SAVE and INTERVIEW FROM APPOINTMENT INDEX', interview)
+    transition(SHOW);
 
   }
   return (
