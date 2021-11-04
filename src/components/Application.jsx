@@ -50,9 +50,10 @@ export default function Application(props) {
     
     return axios.put(PUT_ID, {interview})
       .then((response) => {
-        console.log('THIS IS THE RESPONSE', response);
+        console.log('PUT RESPONSE', response);
       }) 
       .catch((error) => {
+        console.log('PUT ERROR RESPONSE');
         console.log(error.response.status);
         console.log(error.response.headers);
         console.log(error.response.data);
@@ -81,11 +82,12 @@ export default function Application(props) {
    
     const DELETE_INTEVIEW = `http://localhost:8001/api/appointments/${id}`;
     // return axios.delete(DELETE_INTEVIEW, {interview})
-    return axios.delete(DELETE_INTEVIEW)
+    return axios.delete(DELETE_INTEVIEW, {interview})
       .then((response) => {
-        console.log('THIS IS THE DELETE RESPONSE', response);
+        console.log('DELETE RESPONSE', response);
       }) 
       .catch((error) => {
+        console.log('DELETE ERROR RESPONSE');
         console.log(error.response.status);
         console.log(error.response.headers);
         console.log(error.response.data);
