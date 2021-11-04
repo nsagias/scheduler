@@ -12,7 +12,7 @@ const CREATE = "CREATE";
 
 
 export default function Appointment(props) {
-  const {id, item, interview, interviewers} = props;
+  const {id, item, interview, interviewers, bookInterview} = props;
   const { mode, transition, back } = useVisualMode(
     interview ? SHOW : EMPTY
   );
@@ -26,7 +26,8 @@ export default function Appointment(props) {
     };
     console.log('SAVE and INTERVIEW FROM APPOINTMENT INDEX', interview)
     
-    // transition(SHOW);
+    bookInterview(props.id, interview)
+    transition(SHOW);
 
   }
   console.log('PROPS BEFORE JSX', props)
@@ -42,8 +43,8 @@ export default function Appointment(props) {
           student={interview.student}
           interviewer={interview.interviewer}
           // from storybook
-          onEdit={"onEdit"}
-          onDelete={"onDelete"}
+          // onEdit={"onEdit"}
+          // onDelete={"onDelete"}
         />
       )}
       {mode === CREATE && 
