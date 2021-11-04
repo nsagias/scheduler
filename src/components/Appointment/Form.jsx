@@ -25,7 +25,7 @@ export default function Form(props){
   };
   console.log("FORM PROPS", props)
   console.log('STUDENT',student)
-  console.log('INTEVIEWER', interviewer)
+  console.log('INTERVIEWER', interviewer)
   
   return (
     <main className="appointment__card appointment__card--create">
@@ -52,7 +52,8 @@ export default function Form(props){
         <section className="appointment__actions">
           <Button danger onClick={onCancelReset}>Cancel</Button>
           {/* <Button confirm onClick={onSave(interviewer)} >Save</Button> */}
-          <Button confirm onClick={() => onSave(student, interviewer)} >Save</Button>
+          <Button confirm onClick={() => onSave( {student: student, interviewer:interviewer} )} >Save</Button>
+          {/* <Button confirm onClick={() => console.log({student: student, interviewer:interviewer})} >Save</Button> */}
      
         </section>
       </section>

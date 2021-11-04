@@ -26,7 +26,7 @@ export default function Application(props) {
   // const setDays = days => setState(prev => ({ ...prev, days }));
   
   function bookInterview(id, interview) {
-    console.log(id, interview);
+    
     const appointment = {
       ...state.appointments[id],
       interview: { ...interview }
@@ -39,6 +39,7 @@ export default function Application(props) {
       ...state,
       appointments
     });
+    console.log('FROM INSIDE BOOKINTERVIEW',id, interview);
   }
   console.log('state', state)
   useEffect(() => {

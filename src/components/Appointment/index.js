@@ -22,12 +22,14 @@ export default function Appointment(props) {
   function save(name, interviewer) {
     const interview = {
       student: name,
-      interviewer
+      interviewer: interviewer
     };
     console.log('SAVE and INTERVIEW FROM APPOINTMENT INDEX', interview)
-    transition(SHOW);
+    
+    // transition(SHOW);
 
   }
+  console.log('PROPS BEFORE JSX', props)
   return (
     <article className="appointment">
      
@@ -38,8 +40,10 @@ export default function Appointment(props) {
       {mode === SHOW && (
         <Show
           student={interview.student}
-          // interviewer={interview.interviewer}
           interviewer={interview.interviewer}
+          // from storybook
+          onEdit={"onEdit"}
+          onDelete={"onDelete"}
         />
       )}
       {mode === CREATE && 
