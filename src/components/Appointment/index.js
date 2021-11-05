@@ -4,7 +4,8 @@ import Show from 'components/Appointment/Show';
 import Empty from 'components/Appointment/Empty';
 import Form from 'components/Appointment/Form';
 import Confirm from 'components/Appointment/Confirm';
-import Status from './Status';
+import Status from  'components/Appointment/Status';
+import Error from 'components/Appointment/Status';
 import useVisualMode from 'hooks/useVisualMode';
 import "components/Appointment/styles.scss"
 
@@ -15,6 +16,8 @@ const SAVING = "SAVING";
 const DELETING = "DELETING";
 const CONFIRM = "CONFIRM";
 const EDIT = "EDIT";
+const ERROR_SAVE = "ERROR_SAVE";
+const ERROR_DELETE = "ERROR_DELETE";
 
 
 export default function Appointment(props) {
@@ -32,12 +35,9 @@ export default function Appointment(props) {
     };
     console.log('SAVE and INTERVIEW FROM APPOINTMENT INDEX', interview)
     transition(SAVING);// add timout
-    bookInterview(id, interview).then(()=> transition(SHOW))
-    // transition(SHOW);
-    // function onComplete() {
-    //   transition(SHOW);
-    // };
-
+    bookInterview(id, interview)
+      .then(()=> transition(SHOW))
+      .catch(error => transition(ERROR_SAVE));
   }
 
   function onDelete(name, interviewer) {
@@ -45,12 +45,8 @@ export default function Appointment(props) {
       student: null,
       interviewer: null
     };
-    console.log('DELETE and INTERVIEW FROM APPOINTMENT INDEX', interview)
-    
+    console.log('DELETE and INTERVIEW FROM APPOINTMENT INDEX', interview);
     transition(CONFIRM);
-    // ADD CONFIRM LOGIC HERE
-    // transition(DELETING);
-    // cancelInterview(id, interview).then(()=> transition(EMPTY))
   };
 
   // W07D5 
@@ -59,7 +55,9 @@ export default function Appointment(props) {
   // };
   function onConfirm() {
     transition(DELETING);
-    cancelInterview(id, interview).then(()=> transition(EMPTY))
+    cancelInterview(id, interview)
+      .then(()=> transition(EMPTY))
+      .catch(error => transition(ERROR_DELETE));
   };
 
   function onCancel() {
@@ -123,10 +121,21 @@ export default function Appointment(props) {
         interviewers={interviewers}
         onSave={save}
         onCancel= {() => onCancel() }
-        // onCancel= {() => {console.log('OMG,',interview.interviewer.id)} }
+        // onCancel= {() => {console.log('INTEVIEWER',interview.interviewer.id)} }
       />
-
-      } 
+      }
+      { mode === ERROR_SAVE && 
+         <Error 
+         message={"Could Not Save Appointment."}
+         onClose={action("onClose")}
+       />
+      }
+       { mode === ERROR_DELETE && 
+         <Error 
+         message={"Could Not Delete Appointment."}
+         onClose={action("onClose")}
+       />
+      }
       
     </article>
 
