@@ -55,7 +55,7 @@ export default function Appointment(props) {
   //   transition(DELETING);
   // };
   function onConfirm() {
-    transition(DELETING);
+    transition(DELETING, true);
     cancelInterview(id, interview)
       .then(()=> transition(EMPTY))
       .catch(error => transition(ERROR_DELETE, true));
