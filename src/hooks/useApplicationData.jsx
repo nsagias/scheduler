@@ -32,7 +32,6 @@ export default function useApplicationData(props) {
   }
 
   function cancelInterview(id, interview) {
-
     const appointment = {
       ...state.appointments[id],
       interview: { ...interview }
