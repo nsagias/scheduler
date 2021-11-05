@@ -24,6 +24,8 @@ export default function Appointment(props) {
   const {id, item, interview, interviewers, bookInterview, cancelInterview} = props;
   const { mode, transition, back } = useVisualMode(
     interview ? SHOW : EMPTY
+    // interview ? SHOW : ERROR_SAVE
+    // interview ? SHOW : ERROR_DELETE
   );
   console.log(mode)
   console.log('PROPS INSIDE OF APPOINTMENTS', props)
@@ -34,7 +36,7 @@ export default function Appointment(props) {
       interviewer
     };
     console.log('SAVE and INTERVIEW FROM APPOINTMENT INDEX', interview)
-    transition(SAVING);// add timout
+    transition(SAVING);
     bookInterview(id, interview)
       .then(()=> transition(SHOW))
       .catch(error => transition(ERROR_SAVE, true));
@@ -61,6 +63,13 @@ export default function Appointment(props) {
       .catch(error => transition(ERROR_DELETE, true));
   };
 
+  // function destroy(event) {
+  //   transition(DELETING, true);
+  //   cancelInterview(props.id)
+  //     .then(() => transition(EMPTY))
+  //     .catch(error => transition(ERROR_DELETE, true));
+  //  }
+
   
   function onCancel() {
     back();
@@ -74,9 +83,12 @@ export default function Appointment(props) {
     transition(SHOW);
   };
   
+  // Only used to close
   function onClose() {
     back()
   }
+
+
 
 
   console.log('PROPS BEFORE JSX', props)
@@ -85,8 +97,9 @@ export default function Appointment(props) {
      
       <Header time={props.time} />
       
-      {mode === EMPTY && 
-        <Empty onAdd={() => {transition(CREATE)}} />}
+      {mode === EMPTY && (
+        <Empty onAdd={() => {transition(CREATE)}} />
+      )}
       
       {mode === SHOW && (
         <Show
@@ -97,28 +110,32 @@ export default function Appointment(props) {
           onDelete={()=>onDelete()}
         />
       )}
-      {mode === CREATE && 
+      {mode === CREATE && (
         <Form 
           onCancel={() => {onCancel()}} 
           interviewers={interviewers}
           onSave={save}
-        />}
+        />
+      )}
 
 
-       { mode === SAVING && 
-       <Status message={'Saving'}/>}
+       { mode === SAVING && (
+       <Status message={'Saving'}/>
+       )}
 
-       { mode === DELETING && 
-       <Status message={'Deleting'}/>}
+       { mode === DELETING && (
+       <Status message={'Deleting'}/>
+       )}
 
 
-       { mode === CONFIRM && 
+       { mode === CONFIRM && (
        <Confirm 
           message={"Delete the appointment"}
           onCancel={() => {onCancel()}} 
           onConfirm={() => {onConfirm()}}
-       />}
-      { mode === EDIT && 
+       />
+       )}
+      { mode === EDIT && (
       
       <Form 
         student={interview.student}
@@ -128,19 +145,19 @@ export default function Appointment(props) {
         onCancel= {() => onCancel() }
         // onCancel= {() => {console.log('INTEVIEWER',interview.interviewer.id)} }
       />
-      }
-       { mode === ERROR_DELETE && 
+      )}
+       { mode === ERROR_DELETE && (
          <Error 
          message={"Could Not Delete Appointment."}
          onClose={() => onClose()}
        />
-      }
-      {/* { mode === ERROR_SAVE && 
+       )}
+      { mode === ERROR_SAVE && (
          <Error 
          message={"Could Not Save Appointment."}
          onClose={() => onClose()}
        />
-      } */}
+      )}
       
       
     </article>
