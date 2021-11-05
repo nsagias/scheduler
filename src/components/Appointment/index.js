@@ -5,7 +5,7 @@ import Empty from 'components/Appointment/Empty';
 import Form from 'components/Appointment/Form';
 import Confirm from 'components/Appointment/Confirm';
 import Status from  'components/Appointment/Status';
-import Error from 'components/Appointment/Status';
+import Error from 'components/Appointment/Error';
 import useVisualMode from 'hooks/useVisualMode';
 import "components/Appointment/styles.scss"
 
@@ -129,18 +129,19 @@ export default function Appointment(props) {
         // onCancel= {() => {console.log('INTEVIEWER',interview.interviewer.id)} }
       />
       }
-      { mode === ERROR_SAVE && 
-         <Error 
-         message={"Could Not Save Appointment."}
-         onClose={() => onClose()}
-       />
-      }
        { mode === ERROR_DELETE && 
          <Error 
          message={"Could Not Delete Appointment."}
          onClose={() => onClose()}
        />
       }
+      {/* { mode === ERROR_SAVE && 
+         <Error 
+         message={"Could Not Save Appointment."}
+         onClose={() => onClose()}
+       />
+      } */}
+      
       
     </article>
 
