@@ -1,6 +1,35 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
 
+// function updateSpots (state, appointments, id) {
+
+//   const getNewSpots = (appointments, dayID) => {
+//     let count = 0;
+//     const foundDay = state.days.find((day) => {
+//       return day.id === dayID;
+//     });
+
+//     foundDay.appointments.forEach(appointment => {
+//       const foundAppointment = appointments[appointment];
+//       if (foundAppointment.interview === null) {
+//          count += 1;
+//       }
+//     });
+//     return count;
+//   }
+
+//   const days = state.days.map( (day) => {
+//     const isCorrectDay = day.appointments.includes(id)
+//     if (isCorrectDay) {
+//       return {...day, spots: getNewSpots(appointments, day.id)}
+//     } else {
+//       return day;
+//     }
+//   }); 
+// }
+
+
+
 export default function useApplicationData(props) {
   const [state, setState] = useState({
     day: "Monday",
@@ -21,12 +50,37 @@ export default function useApplicationData(props) {
       [id]: appointment
     };
 
+    const getNewSpots = (appointments, dayID) => {
+      let count = 0;
+      const foundDay = state.days.find((day) => {
+        return day.id === dayID;
+      });
+
+      foundDay.appointments.forEach(appointment => {
+        const foundAppointment = appointments[appointment];
+        if (foundAppointment.interview === null) {
+           count += 1;
+        }
+      });
+      return count;
+    }
+
+    const days = state.days.map( (day) => {
+      const isCorrectDay = day.appointments.includes(id)
+      if (isCorrectDay) {
+        return {...day, spots: getNewSpots(appointments, day.id)}
+      } else {
+        return day;
+      }
+    }); 
+    
+
     console.log('FROM INSIDE BOOKINTERVIEW', id, interview);
 
     const PUT_ID = `http://localhost:8001/api/appointments/${id}`;
     return axios.put(PUT_ID, { interview })
       .then((response) => {
-        setState({ ...state, appointments });
+        setState({ ...state, appointments, days });
         console.log('PUT RESPONSE', response);
       })
 
