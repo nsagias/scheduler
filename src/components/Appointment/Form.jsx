@@ -11,7 +11,7 @@ export default function Form(props){
   // create reset function
   const reset = () => {
     setStudent("");
-    setInterviewer("");
+    setInterviewer(null);
   };
   // combine onCancel and reset to execute both
   const onCancelReset= () => {

@@ -34,10 +34,10 @@ export default function Application(props) {
       ...state.appointments,
       [id]: appointment
     };
-    setState({
-      ...state,
-      appointments
-    });
+    // setState({
+    //   ...state,
+    //   appointments
+    // });
 
     // const article = { title: 'React PUT Request Example' };
     // axios.put('https://reqres.in/api/articles/1', article)
@@ -50,14 +50,15 @@ export default function Application(props) {
     
     return axios.put(PUT_ID, {interview})
       .then((response) => {
+        setState({ ...state, appointments });
         console.log('PUT RESPONSE', response);
       }) 
-      .catch((error) => {
-        console.log('PUT ERROR RESPONSE');
-        console.log(error.response.status);
-        console.log(error.response.headers);
-        console.log(error.response.data);
-      });
+      // .catch((error) => {
+      //   console.log('PUT ERROR RESPONSE');
+      //   console.log(error.response.status);
+      //   console.log(error.response.headers);
+      //   console.log(error.response.data);
+      // });
   
   }
 
@@ -71,27 +72,26 @@ export default function Application(props) {
       ...state.appointments,
       [id]: appointment
     };
-    setState({
-      ...state,
-      appointments
-    });
+    // setState({
+    //   ...state,
+    //   appointments
+    // });
 
-    
-    
     console.log('FROM INSIDE_CANCEL_INTERVIEW',id, interview);
    
     const DELETE_INTEVIEW = `http://localhost:8001/api/appointments/${id}`;
     // return axios.delete(DELETE_INTEVIEW, {interview})
     return axios.delete(DELETE_INTEVIEW, {interview})
       .then((response) => {
+        setState({ ...state, appointments });
         console.log('DELETE RESPONSE', response);
       }) 
-      .catch((error) => {
-        console.log('DELETE ERROR RESPONSE');
-        console.log(error.response.status);
-        console.log(error.response.headers);
-        console.log(error.response.data);
-      });
+      // .catch((error) => {
+      //   console.log('DELETE ERROR RESPONSE');
+      //   console.log(error.response.status);
+      //   console.log(error.response.headers);
+      //   console.log(error.response.data);
+      // });
   
   }
 

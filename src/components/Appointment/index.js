@@ -20,8 +20,10 @@ const ERROR_SAVE = "ERROR_SAVE";
 const ERROR_DELETE = "ERROR_DELETE";
 
 
+
 export default function Appointment(props) {
   const {id, item, interview, interviewers, bookInterview, cancelInterview} = props;
+  const INTERVIEWER_ID = 'interview.interviewer.id'
   const { mode, transition, back } = useVisualMode(
     interview ? SHOW : EMPTY
     // interview ? SHOW : ERROR_SAVE
@@ -56,9 +58,10 @@ export default function Appointment(props) {
   // function onConfirm() {
   //   transition(DELETING);
   // };
-  function onConfirm() {
+  function onConfirm(event) {
     transition(DELETING, true);
-    cancelInterview(id, interview)
+    // cancelInterview(id, interview)
+    cancelInterview(id)
       .then(()=> transition(EMPTY))
       .catch(error => transition(ERROR_DELETE, true));
   };
@@ -83,7 +86,7 @@ export default function Appointment(props) {
     transition(SHOW);
   };
   
-  // Only used to close
+
   function onClose() {
     back()
   }
@@ -136,10 +139,12 @@ export default function Appointment(props) {
        />
        )}
       { mode === EDIT && (
-      
       <Form 
         student={interview.student}
-        interviewer={interview.interviewer.id}
+        // check  isMember ? '$2.00' : '$10.00'
+        // undefined ? null: interview.interviewer.id 
+        // interviewer={interview.interviewer.id }
+        interviewer={interview.interviewer && interview.interviewer.id }
         interviewers={interviewers}
         onSave={save}
         onCancel= {() => onCancel() }
