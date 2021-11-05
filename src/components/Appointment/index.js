@@ -37,8 +37,9 @@ export default function Appointment(props) {
     transition(SAVING);// add timout
     bookInterview(id, interview)
       .then(()=> transition(SHOW))
-      .catch(error => transition(ERROR_SAVE));
+      .catch(error => transition(ERROR_SAVE, true));
   }
+ 
 
   function onDelete(name, interviewer) {
     const interview = {
@@ -57,9 +58,10 @@ export default function Appointment(props) {
     transition(DELETING);
     cancelInterview(id, interview)
       .then(()=> transition(EMPTY))
-      .catch(error => transition(ERROR_DELETE));
+      .catch(error => transition(ERROR_DELETE, true));
   };
 
+  
   function onCancel() {
     back();
   };
@@ -72,6 +74,9 @@ export default function Appointment(props) {
     transition(SHOW);
   };
   
+  function onClose() {
+    back()
+  }
 
 
   console.log('PROPS BEFORE JSX', props)
@@ -127,13 +132,13 @@ export default function Appointment(props) {
       { mode === ERROR_SAVE && 
          <Error 
          message={"Could Not Save Appointment."}
-         onClose={action("onClose")}
+         onClose={() => onClose()}
        />
       }
        { mode === ERROR_DELETE && 
          <Error 
          message={"Could Not Delete Appointment."}
-         onClose={action("onClose")}
+         onClose={() => onClose()}
        />
       }
       
