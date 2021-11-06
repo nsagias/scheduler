@@ -99,46 +99,19 @@ export default function useApplicationData(props) {
   function cancelInterview(id, interview) {
     const appointment = {
       ...state.appointments[id],
-      interview: { ...interview }
+      interview: null
     };
     const appointments = {
       ...state.appointments,
       [id]: appointment
     };
-
-    // const days = updateSpots(state, appointments, id);
-    // console.log('OOOOOOOOOOOOOOOOOOOOOOOOOO',days)
-    // console.log('FROM INSIDE_CANCEL_INTERVIEW', id, interview);
-
-    // const getNewSpots = (appointments, dayID) => {
-    //   let count = 0;
-    //   const foundDay = state.days.find((day) => {
-    //     return day.id === dayID;
-    //   });
-  
-    //   foundDay.appointments.forEach(appointment => {
-    //     const foundAppointment = appointments[appointment];
-    //     if (foundAppointment.interview === null) {
-    //       count += 1;
-    //     } 
-    //   });
-    //   return count;
-    // }
-  
-    // const days = state.days.map((day) => {
-    //   const isCorrectDay = day.appointments.includes(id)
-    //   if (isCorrectDay) {
-    //     return { ...day, spots: getNewSpots(appointments, day.id) }
-    //   } else {
-    //     return day;
-    //   }
-    // });
-
+   
 
     const DELETE_INTEVIEW = `http://localhost:8001/api/appointments/${id}`;
     return axios.delete(DELETE_INTEVIEW, { interview })
       .then((response) => {
-        setState({ ...state, appointments});
+        const days = updateSpots(state, appointments, id);
+        setState({ ...state, appointments, days});
         console.log('DELETE RESPONSE', response);
       })
   }
