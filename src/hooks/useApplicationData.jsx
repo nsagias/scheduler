@@ -60,7 +60,8 @@ export default function useApplicationData(props) {
     const GET_APPOINTMENTS = 'http://localhost:8001/api/appointments';
     const GET_INTERVIEWERS = 'http://localhost:8001/api/interviewers';
 
-  return  Promise.all([
+  // return  Promise.all([
+    Promise.all([
       axios.get(GET_DAYS),
       axios.get(GET_APPOINTMENTS),
       axios.get(GET_INTERVIEWERS)

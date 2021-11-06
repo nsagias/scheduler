@@ -1,4 +1,4 @@
-const updateSpots = function(state, appointments, id) {
+export default function updateSpots (state, appointments, id) {
 
   const getNewSpots = (appointments, dayID) => {
     let count = 0;
@@ -27,4 +27,3 @@ const updateSpots = function(state, appointments, id) {
   return days;
 };
 
-export default updateSpots;
