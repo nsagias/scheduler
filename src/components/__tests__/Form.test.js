@@ -68,6 +68,7 @@ describe("Form", () => {
     // )
     const { getByText, queryByText } = render(
       <Form
+        interviewer={1}
         interviewers={interviewers}
         onSave={onSave}
         student="Lydia Miller-Jones"
@@ -76,7 +77,7 @@ describe("Form", () => {
     fireEvent.click(queryByText("Save"));
     expect(queryByText(/student name cannot be blank/i)).toBeNull();
     expect(onSave).toHaveBeenCalledTimes(1);
-    expect(onSave).toHaveBeenCalledWith("Lydia Miller-Jones", null);
+    expect(onSave).toHaveBeenCalledWith("Lydia Miller-Jones", 1);
   });
 
 
