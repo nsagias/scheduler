@@ -36,7 +36,7 @@ export default function Form(props){
       setError("Please select an inteviewer");
       return;
     }
-  
+    setError("");
     onSave(student, interviewer);
   }
   
