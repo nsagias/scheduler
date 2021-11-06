@@ -13,7 +13,7 @@ const updateSpots = function(state, appointments, id) {
       const foundAppointment = appointments[appointment];
       if (foundAppointment.interview === null) {
         count += 1;
-      }
+      } 
     });
     return count;
   }
@@ -50,30 +50,6 @@ export default function useApplicationData(props) {
       ...state.appointments,
       [id]: appointment
     };
-
-    // const getNewSpots = (appointments, dayID) => {
-    //   let count = 0;
-    //   const foundDay = state.days.find((day) => {
-    //     return day.id === dayID;
-    //   });
-
-    //   foundDay.appointments.forEach(appointment => {
-    //     const foundAppointment = appointments[appointment];
-    //     if (foundAppointment.interview === null) {
-    //        count += 1;
-    //     }
-    //   });
-    //   return count;
-    // }
-
-    // const days = state.days.map( (day) => {
-    //   const isCorrectDay = day.appointments.includes(id)
-    //   if (isCorrectDay) {
-    //     return {...day, spots: getNewSpots(appointments, day.id)}
-    //   } else {
-    //     return day;
-    //   }
-    // }); 
     // const updateSpots = function(state, appointments, id) {
 
     //   const getNewSpots = (appointments, dayID) => {
@@ -86,7 +62,7 @@ export default function useApplicationData(props) {
     //       const foundAppointment = appointments[appointment];
     //       if (foundAppointment.interview === null) {
     //         count += 1;
-    //       }
+    //       } 
     //     });
     //     return count;
     //   }
@@ -102,13 +78,18 @@ export default function useApplicationData(props) {
     
     //   return days;
     // };
-    const days = updateSpots(state, appointments, id);
-  
+    
+    // const days = updateSpots(state, appointments);
+    
+    // console.log('XXXXXXXXXXXXXXXXXXXXXXXXX',days)
+
     console.log('FROM INSIDE BOOKINTERVIEW', id, interview);
 
     const PUT_ID = `http://localhost:8001/api/appointments/${id}`;
     return axios.put(PUT_ID, { interview })
       .then((response) => {
+        const days = updateSpots(state, appointments, id);
+        // console.log('XXXXXXXXXXXXXXXXXXXXXXXXX',days)
         setState({ ...state, appointments, days });
         console.log('PUT RESPONSE', response);
       })
@@ -125,13 +106,39 @@ export default function useApplicationData(props) {
       [id]: appointment
     };
 
+    // const days = updateSpots(state, appointments, id);
+    // console.log('OOOOOOOOOOOOOOOOOOOOOOOOOO',days)
+    // console.log('FROM INSIDE_CANCEL_INTERVIEW', id, interview);
 
-    console.log('FROM INSIDE_CANCEL_INTERVIEW', id, interview);
+    // const getNewSpots = (appointments, dayID) => {
+    //   let count = 0;
+    //   const foundDay = state.days.find((day) => {
+    //     return day.id === dayID;
+    //   });
+  
+    //   foundDay.appointments.forEach(appointment => {
+    //     const foundAppointment = appointments[appointment];
+    //     if (foundAppointment.interview === null) {
+    //       count += 1;
+    //     } 
+    //   });
+    //   return count;
+    // }
+  
+    // const days = state.days.map((day) => {
+    //   const isCorrectDay = day.appointments.includes(id)
+    //   if (isCorrectDay) {
+    //     return { ...day, spots: getNewSpots(appointments, day.id) }
+    //   } else {
+    //     return day;
+    //   }
+    // });
+
 
     const DELETE_INTEVIEW = `http://localhost:8001/api/appointments/${id}`;
     return axios.delete(DELETE_INTEVIEW, { interview })
       .then((response) => {
-        setState({ ...state, appointments });
+        setState({ ...state, appointments});
         console.log('DELETE RESPONSE', response);
       })
   }
@@ -141,7 +148,7 @@ export default function useApplicationData(props) {
     const GET_APPOINTMENTS = 'http://localhost:8001/api/appointments';
     const GET_INTERVIEWERS = 'http://localhost:8001/api/interviewers';
 
-    Promise.all([
+  return  Promise.all([
       axios.get(GET_DAYS),
       axios.get(GET_APPOINTMENTS),
       axios.get(GET_INTERVIEWERS)
