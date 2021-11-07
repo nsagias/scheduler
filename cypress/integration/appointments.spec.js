@@ -1,8 +1,15 @@
 describe("Appointments", () => {
+
+  beforeEach(() => {
+    
+    cy.request("GET", "http://localhost:8001/api/debug/reset");
+    cy.visit("/");
+    cy.contains("Monday");
+   });
+
+
   it ("should book an interview", ()=> {
   
-    cy.visit("/")
-    cy.get("li").contains("li","Monday")
     cy.get("[alt=Add]").first().click()
     cy.get("[data-testid=student-name-input]").type("Lydia Miller-Jones")
     cy.get("[alt='Sylvia Palmer']").click()
@@ -10,8 +17,7 @@ describe("Appointments", () => {
   })
 
   it ("should edit interview", ()=> {
-    cy.visit("/")
-    cy.get("li").contains("li","Monday")
+   
     cy.get("[alt=Edit]")
       .first()
       .click({ force: true });
@@ -26,8 +32,7 @@ describe("Appointments", () => {
     
   })
   it("should cancel an interview", () => {
-    cy.visit("/")
-    cy.get("li").contains("li","Monday")
+  
     cy.get("[alt=Delete]")
       .click({ force: true });
   
@@ -39,4 +44,6 @@ describe("Appointments", () => {
     cy.contains(".appointment__card--show", "Archie Cohen")
       .should("not.exist");
   });
+
+
 });
