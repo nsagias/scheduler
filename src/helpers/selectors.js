@@ -1,8 +1,8 @@
 /**
  * Function to  get appoment out of state/data
- * @param {*} state 
- * @param {*} day 
- * @returns array of appointments for for day
+ * @param {Object} state 
+ * @param {String} day 
+ * @returns {Array}array of appointments for for day
  */
 export function getAppointmentsForDay(state, day) {
   let appointments = [];
@@ -26,9 +26,9 @@ export function getAppointmentsForDay(state, day) {
 
 /**
  * Function to single interviewer
- * @param {*} state 
- * @param {*} interview 
- * @returns  key value pair { student : student, inteviwer: interviwer }
+ * @param {Object} state 
+ * @param {Number} interview 
+ * @returns {Object} key value pair { student : student, inteviwer: interviwer }
  */
 
 export function getInterview(state, interview ){
@@ -47,9 +47,9 @@ export function getInterview(state, interview ){
 
 /**
  * get interviewers for day
- * @param {*} state 
- * @param {*} day 
- * @returns array of inteviwers for day
+ * @param {Object} state 
+ * @param {String} day 
+ * @returns {Array}array of inteviwers for day
  */
 export function getInterviewersForDay(state, day) {
   let interviewers = [];
