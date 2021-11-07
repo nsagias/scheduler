@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import updateSpots from "helpers/updateSpots";
 import axios from 'axios';
 
@@ -22,17 +22,12 @@ export default function useApplicationData(props) {
       [id]: appointment
     };
     
-    console.log('FROM INSIDE BOOKINTERVIEW', id, interview);
-
     const PUT_ID = `http://localhost:8001/api/appointments/${id}`;
     return axios.put(PUT_ID, { interview })
       .then((response) => {
         const days = updateSpots(state, appointments, id);
-        // console.log('XXXXXXXXXXXXXXXXXXXXXXXXX',days)
         setState({ ...state, appointments, days });
-        console.log('PUT RESPONSE', response);
-      })
-
+      });
   }
 
   function cancelInterview(id, interview) {
@@ -46,21 +41,19 @@ export default function useApplicationData(props) {
     };
    
 
-    const DELETE_INTEVIEW = `http://localhost:8001/api/appointments/${id}`;
-    return axios.delete(DELETE_INTEVIEW, { interview })
-      .then((response) => {
-        const days = updateSpots(state, appointments, id);
-        setState({ ...state, appointments, days});
-        console.log('DELETE RESPONSE', response);
-      })
-  }
+  const DELETE_INTEVIEW = `http://localhost:8001/api/appointments/${id}`;
+  return axios.delete(DELETE_INTEVIEW, { interview })
+    .then((response) => {
+      const days = updateSpots(state, appointments, id);
+      setState({ ...state, appointments, days});
+    });
+  };
 
   useEffect(() => {
     const GET_DAYS = 'http://localhost:8001/api/days';
     const GET_APPOINTMENTS = 'http://localhost:8001/api/appointments';
     const GET_INTERVIEWERS = 'http://localhost:8001/api/interviewers';
 
-  // return  Promise.all([
     Promise.all([
       axios.get(GET_DAYS),
       axios.get(GET_APPOINTMENTS),
