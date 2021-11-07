@@ -13,7 +13,7 @@ export default function updateSpots (state, appointments, id) {
       } 
     });
     return count;
-  }
+  };
 
   const days = state.days.map((day) => {
     const isCorrectDay = day.appointments.includes(id)
