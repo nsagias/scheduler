@@ -22,7 +22,7 @@ const ERROR_DELETE = "ERROR_DELETE";
 
 
 export default function Appointment(props) {
-  const {id, item, interview, interviewers, bookInterview, cancelInterview} = props;
+  const {id, interview, interviewers, bookInterview, cancelInterview} = props;
   const { mode, transition, back } = useVisualMode(
     interview ? SHOW : EMPTY
   );
