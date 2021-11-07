@@ -1,11 +1,8 @@
 import React from 'react';
 
 export default function Show(props) {
-  const {student, interviewer, onEdit, onDelete, id } = props;
-  // const {interview, onEdit, onDelete, id } = props;
-  console.log('SHOW > STUDENT',student)
-  console.log('SHOW > INTERVIEW',interviewer)
-
+  const {student, interviewer, onEdit, onDelete, id} = props;
+  
   return (
     <main className="appointment__card appointment__card--show">
       <section className="appointment__card-left">
