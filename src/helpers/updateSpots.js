@@ -8,13 +8,16 @@
  */
 
 export default function updateSpots (state, appointments, id) {
-
+  
+  
   const getNewSpots = (appointments, dayID) => {
     let count = 0;
+    // loop through days and match day 
     const foundDay = state.days.find((day) => {
       return day.id === dayID;
     });
-
+  
+    // loop through specific day and count nulls for that days and return count
     foundDay.appointments.forEach(appointment => {
       const foundAppointment = appointments[appointment];
       if (foundAppointment.interview === null) {
@@ -24,6 +27,9 @@ export default function updateSpots (state, appointments, id) {
     return count;
   };
 
+  // loop through all days if specific days matches days 
+  // use getNewSpots and update the object else leave the object unchange for day
+  // and matp into array
   const days = state.days.map((day) => {
     const isCorrectDay = day.appointments.includes(id)
     if (isCorrectDay) {
@@ -32,7 +38,8 @@ export default function updateSpots (state, appointments, id) {
       return day;
     }
   });
-
+  
+  // return days array
   return days;
 };
 
