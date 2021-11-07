@@ -39,7 +39,7 @@ export default function Appointment(props) {
       .catch(error => transition(ERROR_SAVE, true));
   }
  
-  function onDelete(name, interviewer) {
+  function onDelete() {
     const interview = {
       student: null,
       interviewer: null
@@ -48,7 +48,7 @@ export default function Appointment(props) {
     transition(CONFIRM);
   };
 
-  function onConfirm(event) {
+  function onConfirm() {
     transition(DELETING, true);
     cancelInterview(id)
       .then(()=> transition(EMPTY))
