@@ -5,7 +5,7 @@ import "components/InterviewerList.scss";
 
 
 export default function InterviewerList(props) {
-  const {interviewers,onChange} = props;
+  const {interviewers, onChange} = props;
 
   const parsedInterviewers = interviewers.map(person => 
     <InterviewListItem 
@@ -24,7 +24,8 @@ export default function InterviewerList(props) {
     </section>  
   );
 }
-  
+
+// check prop-types to an array and is required
 InterviewerList.propTypes = {
   interviewers: PropTypes.array.isRequired
 };
