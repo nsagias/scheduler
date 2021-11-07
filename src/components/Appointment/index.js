@@ -23,21 +23,17 @@ const ERROR_DELETE = "ERROR_DELETE";
 
 export default function Appointment(props) {
   const {id, item, interview, interviewers, bookInterview, cancelInterview} = props;
-  const INTERVIEWER_ID = 'interview.interviewer.id'
   const { mode, transition, back } = useVisualMode(
     interview ? SHOW : EMPTY
-    // interview ? SHOW : ERROR_SAVE
-    // interview ? SHOW : ERROR_DELETE
   );
-  console.log(mode)
-  console.log('PROPS INSIDE OF APPOINTMENTS', props)
+  
 
   function save(name, interviewer) {
     const interview = {
       student: name,
       interviewer
     };
-    console.log('SAVE and INTERVIEW FROM APPOINTMENT INDEX', interview)
+   
     transition(SAVING);
     bookInterview(id, interview)
       .then(()=> transition(SHOW))
@@ -54,24 +50,13 @@ export default function Appointment(props) {
     transition(CONFIRM);
   };
 
-  // W07D5 
-  // function onConfirm() {
-  //   transition(DELETING);
-  // };
+
   function onConfirm(event) {
     transition(DELETING, true);
-    // cancelInterview(id, interview)
     cancelInterview(id)
       .then(()=> transition(EMPTY))
       .catch(error => transition(ERROR_DELETE, true));
   };
-
-  // function destroy(event) {
-  //   transition(DELETING, true);
-  //   cancelInterview(props.id)
-  //     .then(() => transition(EMPTY))
-  //     .catch(error => transition(ERROR_DELETE, true));
-  //  }
 
   
   function onCancel() {
@@ -82,19 +67,11 @@ export default function Appointment(props) {
     transition(EDIT);
   }
 
-  function onComplete() {
-    transition(SHOW);
-  };
-  
-
   function onClose() {
     back()
   }
 
 
-
-
-  console.log('PROPS BEFORE JSX', props)
   return (
     <article className="appointment">
      
@@ -108,7 +85,6 @@ export default function Appointment(props) {
         <Show
           student={interview.student}
           interviewer={interview.interviewer}
-          // from storybook
           onEdit={()=>onEdit()}
           onDelete={()=>onDelete()}
         />
@@ -145,7 +121,6 @@ export default function Appointment(props) {
         interviewers={interviewers}
         onSave={save}
         onCancel= {() => onCancel() }
-        // onCancel= {() => {console.log('INTEVIEWER',interview.interviewer.id)} }
       />
       )}
        { mode === ERROR_DELETE && (
@@ -161,8 +136,6 @@ export default function Appointment(props) {
        />
       )}
       
-      
     </article>
-
   );
 }
