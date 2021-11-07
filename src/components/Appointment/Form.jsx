@@ -9,26 +9,27 @@ export default function Form(props){
   const [interviewer, setInterviewer] = useState(props.interviewer || null);
   const [error, setError] = useState("");
 
-  // create reset function
+  // Reset fucntion used empty input and remove interviewer
   const reset = () => {
     setStudent("");
     setInterviewer(null);
   };
 
-  // combine onCancel and reset to execute both
+  // Combine onClick/onCancel() and Reset to execute both when clicked
   const onCancelReset= () => {
     onCancel();
     reset();
   }; 
   
-
+  // Factored out preventDefault
   const handleSubmit = event => {
     event.preventDefault();
   };
   
-
+  // Vallidate if input/student is empty and check if interview is falsy/empty var
   function validate() {
-    if (student === "") {
+    // Trim() student variable to prevent empty string 
+    if (student.trim() === "") {
       setError("Student name cannot be blank");
       return;
     }
@@ -36,6 +37,7 @@ export default function Form(props){
       setError("Please select an inteviewer");
       return;
     }
+    // clear error
     setError("");
     onSave(student, interviewer);
   }
