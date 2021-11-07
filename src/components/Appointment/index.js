@@ -44,7 +44,7 @@ export default function Appointment(props) {
       student: null,
       interviewer: null
     };
-    console.log('DELETE and INTERVIEW FROM APPOINTMENT INDEX', interview);
+   
     transition(CONFIRM);
   };
 
