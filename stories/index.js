@@ -67,28 +67,7 @@ storiesOf("Button", module)
     },
   ];
   
-  // storiesOf("DayList", module)
-  //   .addParameters({
-  //     backgrounds: [{ name: "dark", value: "#222f3e", default: true }],
-  //   })
-  //   .add("Monday", () => (
-  //     <DayList 
-  //       days={days} 
-  //       day={"Monday"} 
-  //       setDay={action("setDay")} />
-  //   ))
-  //   .add("Tuesday", () => (
-  //     <DayList 
-  //       days={days} 
-  //       day={"Tuesday"} 
-  //       setDay={action("setDay")} />
-  //   ))
-  //   .add("Wednesday", () => (
-  //       <DayList 
-  //       days={days} 
-  //       day={"Wednesday"} 
-  //       setDay={action("setDay")} />
-  //   ));
+  
   storiesOf("DayList", module)
   .addParameters({
     backgrounds: [{ name: "dark", value: "#222f3e", default: true }],
@@ -128,14 +107,7 @@ storiesOf("Button", module)
           selected
         />
       ))
-      // .add("Clickable", () => (
-      //   <InterviewerListItem
-      //     id={interviewer.id}
-      //     name={interviewer.name}
-      //     avatar={interviewer.avatar}
-      //     setInterviewer={action("setInterviewer")}
-      //   />
-      // ));
+     
       .add("Clickable", () => (
         <InterviewerListItem
           name={interviewer.name}
@@ -152,27 +124,6 @@ const interviewers = [
   { id: 5, name: "Sven Jones", avatar: "https://i.imgur.com/twYrpay.jpg" }
 ];
 
-// storiesOf("InterviewerList", module)
-//   .addParameters({
-//     backgrounds: [{ name: "dark", value: "#222f3e", default: true }]
-//   })
-//   .add("Initial", () => (
-//     <InterviewerList
-//       interviewers={interviewers}
-//     />
-//   ))
-//   .add("Selected", () => (
-//     <InterviewerList
-//       interviewers={interviewers}
-//       interviewer={3}
-//     />
-//   ))
-//   .add("Clickable", () => (
-//     <InterviewerList
-//       interviewers={interviewers}
-//       setInterviewer={action("setInterviewer")}
-//     />
-//   ));
 
 storiesOf("InterviewerList", module)
   .addParameters({
