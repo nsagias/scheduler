@@ -6,9 +6,11 @@ export default function Show(props) {
   return (
     <main className="appointment__card appointment__card--show">
       <section className="appointment__card-left">
+        {/* evaluate to see if there is student prop  */}
         <h2 className="text--regular">{student && student}</h2>
         <section className="interviewer">
           <h4 className="text--light">Interviewer</h4>
+          {/* evaluate to see if interviewer prop  */}
           <h3 className="text--regular" key={id}>{interviewer && interviewer.name}</h3>
         </section>
       </section>
