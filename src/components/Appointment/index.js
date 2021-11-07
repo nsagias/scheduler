@@ -27,6 +27,7 @@ export default function Appointment(props) {
     interview ? SHOW : EMPTY
   );
   
+
   function save(name, interviewer) {
     const interview = {
       student: name,
@@ -38,7 +39,7 @@ export default function Appointment(props) {
       .then(()=> transition(SHOW))
       .catch(error => transition(ERROR_SAVE, true));
   }
- 
+  
   function onDelete() {
     const interview = {
       student: null,
@@ -47,7 +48,8 @@ export default function Appointment(props) {
    
     transition(CONFIRM);
   };
-
+  
+  // onConfirm is used to delele/destroy
   function onConfirm() {
     transition(DELETING, true);
     cancelInterview(id)
@@ -105,6 +107,7 @@ export default function Appointment(props) {
       { mode === EDIT && (
         <Form 
           student={interview.student}
+          // check to see if interviewer.interview before trying to insert id
           interviewer={interview.interviewer && interview.interviewer.id }
           interviewers={interviewers}
           onSave={save}
