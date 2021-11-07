@@ -5,7 +5,7 @@ import "components/InterviewListItem.scss"
 export default function InterviewListItem(props){
   const {id, name, avatar, selected, setInterviewer} = props;
 
-
+  // logic to display or return undefined if selected is falsy
   function nameLogic(name) {
     if (!selected) {
       return undefined;
