@@ -5,9 +5,11 @@ Scheduler is a single page React application that allows users to book and cance
 
 ## Final Product
 
-!["Screenshot of URLs page"](https://github.com/lighthouse-labs/tinyapp/blob/master/docs/urls-page.png)
+!["Screenshot of URLs page"](https://github.com/nsagias/scheduler/blob/master/docs/screen_1_main.png)
+!["Screenshot of URLs page"](https://github.com/nsagias/scheduler/blob/master/docs/screen_2_add.png)
+!["Screenshot of URLs page"](https://github.com/nsagias/scheduler/blob/master/docs/screen_1_confirm.png)
+!["Screenshot of URLs page"](https://github.com/nsagias/scheduler/blob/master/docs/screen_1_error.png)
 
-!["Screenshot of register page"](https://github.com/lighthouse-labs/tinyapp/blob/master/docs/register-page.png)
 
 
 ## Dependencies
