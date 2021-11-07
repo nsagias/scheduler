@@ -7,8 +7,8 @@ Scheduler is a single page React application that allows users to book and cance
 
 !["Screenshot of URLs page"](https://github.com/nsagias/scheduler/blob/master/docs/screen_1_main.png)
 !["Screenshot of URLs page"](https://github.com/nsagias/scheduler/blob/master/docs/screen_2_add.png)
-!["Screenshot of URLs page"](https://github.com/nsagias/scheduler/blob/master/docs/screen_1_confirm.png)
-!["Screenshot of URLs page"](https://github.com/nsagias/scheduler/blob/master/docs/screen_1_error.png)
+!["Screenshot of URLs page"](https://github.com/nsagias/scheduler/blob/master/docs/screen_3_confirm.png)
+!["Screenshot of URLs page"](https://github.com/nsagias/scheduler/blob/master/docs/screen_4_error.png)
 
 
 
