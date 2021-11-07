@@ -3,7 +3,8 @@ import classNames from "classnames";
 import "components/InterviewListItem.scss"
 
 export default function InterviewListItem(props){
-  let {id, name, avatar, selected, setInterviewer} = props;
+  const {id, name, avatar, selected, setInterviewer} = props;
+
 
   function nameLogic(name) {
     if (!selected) {
